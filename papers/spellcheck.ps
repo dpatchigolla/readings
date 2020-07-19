@@ -1,0 +1,3026 @@
+%!PS-Adobe-2.0
+%%Copyright: Copyright (c) 1993 AT&T, All Rights Reserved
+%%Version: 3.4
+%%DocumentFonts: (atend)
+%%Pages: (atend)
+%%EndComments
+/DpostDict 200 dict def
+DpostDict begin
+%
+% Copyright (c) 1993 AT&T, All Rights Reserved
+%
+% Version 3.4 prologue for troff files.
+%
+
+/#copies 1 store
+/Prologue (dpost.ps) def
+/aspectratio 1 def
+/formsperpage 1 def
+/landscape false def
+/linewidth .3 def
+/magnification 1 def
+/margin 0 def
+/orientation 0 def
+/resolution 720 def
+/rotation 1 def
+/xoffset 0 def
+/yoffset 0 def
+
+/roundpage true def
+/useclippath true def
+/pagebbox [0 0 612 792] def
+
+/R  /Times-Roman def
+/I  /Times-Italic def
+/B  /Times-Bold def
+/BI /Times-BoldItalic def
+/H  /Helvetica def
+/HI /Helvetica-Oblique def
+/HB /Helvetica-Bold def
+/HX /Helvetica-BoldOblique def
+/CW /Courier def
+/CO /Courier def
+/CI /Courier-Oblique def
+/CB /Courier-Bold def
+/CX /Courier-BoldOblique def
+/PA /Palatino-Roman def
+/PI /Palatino-Italic def
+/PB /Palatino-Bold def
+/PX /Palatino-BoldItalic def
+/Hr /Helvetica-Narrow def
+/Hi /Helvetica-Narrow-Oblique def
+/Hb /Helvetica-Narrow-Bold def
+/Hx /Helvetica-Narrow-BoldOblique def
+/KR /Bookman-Light def
+/KI /Bookman-LightItalic def
+/KB /Bookman-Demi def
+/KX /Bookman-DemiItalic def
+/AR /AvantGarde-Book def
+/AI /AvantGarde-BookOblique def
+/AB /AvantGarde-Demi def
+/AX /AvantGarde-DemiOblique def
+/NR /NewCenturySchlbk-Roman def
+/NI /NewCenturySchlbk-Italic def
+/NB /NewCenturySchlbk-Bold def
+/NX /NewCenturySchlbk-BoldItalic def
+/ZD /ZapfDingbats def
+/ZI /ZapfChancery-MediumItalic def
+/S  /S def
+/S1 /S1 def
+/GR /Symbol def
+
+/inch {72 mul} bind def
+/min {2 copy gt {exch} if pop} bind def
+
+/setup {
+	counttomark 2 idiv {def} repeat pop
+
+	landscape {/orientation 90 orientation add def} if
+	/scaling 72 resolution div def
+	linewidth setlinewidth
+	1 setlinecap
+
+	pagedimensions
+	xcenter ycenter translate
+	orientation rotation mul rotate
+	width 2 div neg height 2 div translate
+	xoffset inch yoffset inch neg translate
+	margin 2 div dup neg translate
+	magnification dup aspectratio mul scale
+	scaling scaling scale
+
+	addmetrics
+	0 0 moveto
+} def
+
+/pagedimensions {
+	useclippath userdict /gotpagebbox known not and {
+		/pagebbox [clippath pathbbox newpath] def
+		roundpage currentdict /roundpagebbox known and {roundpagebbox} if
+	} if
+	pagebbox aload pop
+	4 -1 roll exch 4 1 roll 4 copy
+	landscape {4 2 roll} if
+	sub /width exch def
+	sub /height exch def
+	add 2 div /xcenter exch def
+	add 2 div /ycenter exch def
+	userdict /gotpagebbox true put
+} def
+
+/landscapepage {
+	landscape not {
+		0 height scaling div neg translate	% not quite
+		90 rotate
+	} if
+} bind def
+
+/portraitpage {
+	landscape {
+		width scaling div 0 translate	% not quite
+		-90 rotate
+	} if
+} bind def
+
+/addmetrics {
+	/Symbol /S null Sdefs cf
+	/Times-Roman /S1 StandardEncoding dup length array copy S1defs cf
+} def
+
+/pagesetup {
+	/page exch def
+	currentdict /pagedict known currentdict page known and {
+		page load pagedict exch get cvx exec
+	} if
+} def
+
+/decodingdefs [
+	{counttomark 2 idiv {y moveto show} repeat}
+	{neg /y exch def counttomark 2 idiv {y moveto show} repeat}
+	{neg moveto {2 index stringwidth pop sub exch div 0 32 4 -1 roll widthshow} repeat}
+	{neg moveto {spacewidth sub 0.0 32 4 -1 roll widthshow} repeat}
+	{counttomark 2 idiv {y moveto show} repeat}
+	{neg setfunnytext}
+] def
+
+/setdecoding {/t decodingdefs 3 -1 roll get bind def} bind def
+
+/w {neg moveto show} bind def
+/m {neg dup /y exch def moveto} bind def
+/done {/lastpage where {pop lastpage} if} def
+
+/f {
+	dup /font exch def findfont exch
+	dup /ptsize exch def scaling div dup /size exch def scalefont setfont
+	linewidth ptsize mul scaling 10 mul div setlinewidth
+	/spacewidth ( ) stringwidth pop def
+} bind def
+
+/changefont {
+	/fontheight exch def
+	/fontslant exch def
+	currentfont [
+		1 0
+		fontheight ptsize div fontslant sin mul fontslant cos div
+		fontheight ptsize div
+		0 0
+	] makefont setfont
+} bind def
+
+/sf {f} bind def
+
+/cf {
+	dup length 2 idiv
+	/entries exch def
+	/chtab exch def
+	/newencoding exch def
+	/newfont exch def
+
+	findfont dup length 1 add dict
+	/newdict exch def
+	{1 index /FID ne {newdict 3 1 roll put}{pop pop} ifelse} forall
+
+	newencoding type /arraytype eq {newdict /Encoding newencoding put} if
+
+	newdict /Metrics entries dict put
+	newdict /Metrics get
+	begin
+		chtab aload pop
+		1 1 entries {pop def} for
+		newfont newdict definefont pop
+	end
+} bind def
+
+%
+% A few arrays used to adjust reference points and character widths in some
+% of the printer resident fonts. If square roots are too high try changing
+% the lines describing /radical and /radicalex to,
+%
+%	/radical	[0 -75 550 0]
+%	/radicalex	[-50 -75 500 0]
+%
+% Move braceleftbt a bit - default PostScript character is off a bit.
+%
+
+/Sdefs [
+	/bracketlefttp		[201 500]
+	/bracketleftbt		[201 500]
+	/bracketrighttp		[-81 380]
+	/bracketrightbt		[-83 380]
+	/braceleftbt		[203 490]
+	/bracketrightex		[220 -125 500 0]
+	/radical		[0 0 550 0]
+	/radicalex		[-50 0 500 0]
+	/parenleftex		[-20 -170 0 0]
+	/integral		[100 -50 500 0]
+	/infinity		[10 -75 730 0]
+] def
+
+/S1defs [
+	/underscore		[0 80 500 0]
+	/endash			[7 90 650 0]
+] def
+end
+%%EndProlog
+%%BeginSetup
+DpostDict begin
+mark
+/resolution 720 def
+setup
+2 setdecoding
+end
+%%EndSetup
+%%Page: 1 1
+DpostDict begin
+/saveobj save def
+mark
+1 pagesetup
+10 R f
+(- 1 -)2 166 1 2797 480 t
+10 B f
+(Probability Scoring for Spelling Correction)4 1850 1 1775 960 t
+10 I f
+(Kenneth W. Church)2 791 1 2304 1200 t
+(William A. Gale)2 647 1 2376 1320 t
+10 R f
+(AT&T Bell Laboratories)2 993 1 2203 1560 t
+(600 Mountain Ave.)2 780 1 2310 1680 t
+(Murray Hill, N.J., USA)3 941 1 2229 1800 t
+10 B f
+(Keywords:)1161 2140 w
+10 R f
+(automated learning, spelling correction, n-gram language model,)6 2587 1 1652 2140 t
+(Good Turing estimates.)2 941 1 2229 2360 t
+%INFO[SECTION: LEVEL = 2, NUMBER = none, HEADING = Abstract]
+9 B f
+(Abstract)2532 2910 w
+10 R f
+(This paper describes a new program,)5 1558 1 720 3460 t
+10 I f
+(correct)2321 3460 w
+10 R f
+( by the Unix)3 554(, which takes words rejected)4 1205 2 2609 3460 t
+10 S f
+(\322)4368 3460 w
+10 I f
+(spell)4491 3460 w
+10 R f
+( The)1 220( scores.)1 314(program, proposes a list of candidate corrections, and sorts them by a probability)12 3426 3 720 3680 t
+( are based on a noisy channel)6 1265( They)1 271( contribution of this work.)4 1111(probability socres are the novel)4 1313 4 720 3900 t
+( type but some noise is)5 939( is assumed that the typist knows what words he or she wants to)13 2629(model. It)1 392 3 720 4120 t
+( a classic)2 394( Using)1 306( to the keyboard \(in the form of typos and spelling errors\).)11 2511(added on the way)3 749 4 720 4340 t
+( of the kind that is popular in recognition applications, especially speech)11 3166(Bayesian argument)1 794 2 720 4560 t
+( intended correction,)2 849(recognition \(Jelinek, 1985\), one can often recover the)7 2220 2 720 4780 t
+10 I f
+(c)3827 4780 w
+10 R f
+(, from a typo,)3 580 1 3871 4780 t
+10 I f
+(t)4489 4780 w
+10 R f
+(, by)1 163 1 4517 4780 t
+(\256nding the correction)2 866 1 720 5000 t
+10 I f
+(c)1614 5000 w
+10 R f
+(that maximizes)1 611 1 1686 5000 t
+10 I f
+(Pr)2325 5000 w
+10 R f
+(\()2433 5000 w
+10 I f
+(c)2474 5000 w
+10 R f
+(\))2526 5000 w
+10 I f
+(Pr)2608 5000 w
+10 R f
+(\()2716 5000 w
+10 I f
+(t)2757 5000 w
+10 S f
+(\357)2785 5017 w
+10 I f
+(c)2833 5000 w
+10 R f
+( \256rst factor,)2 469(\). The)1 266 2 2885 5000 t
+10 I f
+(Pr)3648 5000 w
+10 R f
+(\()3756 5000 w
+10 I f
+(c)3797 5000 w
+10 R f
+(\), is a prior model of)5 831 1 3849 5000 t
+(word probabilities; the second factor,)4 1529 1 720 5220 t
+10 I f
+(Pr)2284 5220 w
+10 R f
+(\()2392 5220 w
+10 I f
+(t)2433 5220 w
+10 S f
+(\357)2461 5237 w
+10 I f
+(c)2509 5220 w
+10 R f
+( that accounts for)3 723(\), is a model of the noisy channel)7 1396 2 2561 5220 t
+( substitutions and reversals\).)3 1198(spelling transformations on letter sequences \(insertions, deletions,)6 2762 2 720 5440 t
+( using data collected from the Associated Press \(AP\))8 2246(Both sets of probabilities were estimated)5 1714 2 720 5660 t
+( AP generates about 1 million words and 500)8 1836( The)1 209( training set.)2 505(newswire over 1988 and 1989 as a)6 1410 4 720 5880 t
+(types per week.)2 623 1 720 6100 t
+( the program, we found that human judges were extremely reluctant to cast a vote)14 3425(In evaluating)1 535 2 720 6540 t
+( comfortable)1 515(given only the information available to the program, and that they were much more)13 3445 2 720 6760 t
+( this paper discusses some very)5 1261( second half of)3 593( The)1 206(when they could see a concordance line or two.)8 1900 4 720 6980 t
+( n-gram methods are)3 859( Although)1 440( statistics.)1 407(simple methods of modeling the context using n-gram)7 2254 4 720 7200 t
+( natural)1 329(much too simple \(compared with much more sophisticated methods used in AI and)12 3631 2 720 7420 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 1 1
+%%Page: 2 2
+DpostDict begin
+/saveobj save def
+mark
+2 pagesetup
+10 R f
+(- 2 -)2 166 1 2797 880 t
+( very simple methods illustrate some very)6 1755(language processing\), we have found that even these)7 2205 2 720 1760 t
+(interesting estimation problems that will almost certainly come up when we consider more)12 3960 1 720 1980 t
+( estimate the probability of a context that)7 1654( problem is how to)4 762( The)1 208(sophisticated models of contexts.)3 1336 4 720 2200 t
+( are useless or)3 610( compare several estimation techniques and \256nd that some)8 2450( We)1 203(we haven't seen.)2 697 4 720 2420 t
+( method provides an)3 900( we have found that the Good-Turing)6 1666( Fortunately,)1 566(worse than useless.)2 828 4 720 2640 t
+( probabilities that produces a signi\256cant improvement in program)8 2988(estimate of contextual)2 972 2 720 2860 t
+( is helpful in this application, but only if it is estimated very carefully.)13 2796(performance. Context)1 895 2 720 3080 t
+( different knowledge sources: the prior, the channel and the)9 2489(At this point, we have a number of)7 1471 2 720 3520 t
+( general, performance will be improved)5 1609( In)1 139( be more in the future.)5 917(context, and there will certainly)4 1295 4 720 3740 t
+( as each additional)3 827(as more and more knowledge sources are added to the system, as long)12 3133 2 720 3960 t
+( shall see, it is important)5 998( we)1 146( As)1 166(knowledge source provides some new \(independent\) information.)6 2650 4 720 4180 t
+( especially when there are a large number of)8 1918(to think more carefully about combination rules,)6 2042 2 720 4400 t
+(different knowledge sources.)2 1155 1 720 4620 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 1.  , HEADING = The Problem]
+9 B f
+( Problem)1 353(1. The)1 264 2 720 5280 t
+10 R f
+(The)720 5830 w
+10 I f
+(correct)902 5830 w
+10 R f
+( of misspelled words from the input stream \()8 1800(program reads a list)3 796 2 1217 5830 t
+10 I f
+(stdin)3813 5830 w
+10 R f
+(\) and prints a set)4 672 1 4008 5830 t
+( stream \()2 379(of candidate corrections for each word on the output)8 2217 2 720 6050 t
+10 I f
+(stdout)3316 6050 w
+10 R f
+(\).)3561 6050 w
+10 I f
+(Correct)3684 6050 w
+10 R f
+(also produces a)2 645 1 4035 6050 t
+( \(unless there is only one candidate correction\).)7 2002(probability estimate along with each correction)5 1958 2 720 6270 t
+(These probabilities distinguish)2 1240 1 720 6490 t
+10 I f
+(correct)1991 6490 w
+10 R f
+( problem of \256nding)3 790( The)1 210( correctors.)1 453(from previous spelling)2 917 4 2310 6490 t
+( way to estimate these probabilities from the various available sources of knowledge)12 3444(just the right)2 516 2 720 6710 t
+( only)1 203( this paper we have)4 774( In)1 134(poses a technical challenge for both statistics and arti\256cial intelligence.)9 2849 4 720 6930 t
+(dealt with a few of the more obvious possibilities.)8 1996 1 720 7150 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 2 2
+%%Page: 3 3
+DpostDict begin
+/saveobj save def
+mark
+3 pagesetup
+10 R f
+(- 3 -)2 166 1 2797 880 t
+(Here is some sample output produced by the Unix)8 2099 1 720 1760 t
+10 S f
+(\322)2819 1760 w
+10 R f
+(command, ``spell paper)2 971 1 2936 1760 t
+10 S f
+(\357)3945 1760 w
+10 R f
+(correct,'' where)1 648 1 4032 1760 t
+10 I f
+(paper)720 1980 w
+10 R f
+(is a text \256le containing the misspelled words in column 1:)10 2311 1 978 1980 t
+10 B f
+(Table 1)1 320 1 2540 2420 t
+10 R f
+(Examples of Output of)3 913 1 2087 2640 t
+10 I f
+(correct)3025 2640 w
+10 B f
+(Typo Corrections)1 1198 1 1093 3080 t
+10 S f
+(_ ________________________________________________________________)1 3214 1 1093 3200 t
+10 R f
+( \(100%\) metered \(0%\) petered \(0%\))5 1436(detered deterred)1 1020 2 1093 3420 t
+( \(100%\) layer \(0%\) lawer \(0%\))5 1242(laywer lawyer)1 965 2 1093 3640 t
+(negotations negotiations)1 1183 1 1093 3860 t
+(notcampaigning ???)1 826 1 1093 4080 t
+7 R f
+(1)1919 4040 w
+10 R f
+( \(94%\) procession \(4%\) profession \(2%\))5 1615(progession progression)1 1160 2 1093 4300 t
+(ususally usually)1 983 1 1093 4520 t
+( \(69%\) wink \(20%\) winks \(7%\) kinky \(2%\) wonky \(1%\))9 2259(winky windy)1 944 2 1093 4740 t
+(pinky \(1%\) dinky \(0%\) winy \(0%\) inky \(0%\))7 1805 1 1787 4960 t
+10 S f
+(\347)1762 4960 w
+(\347)1762 4860 w
+(\347)1762 4760 w
+(\347)1762 4660 w
+(\347)1762 4560 w
+(\347)1762 4460 w
+(\347)1762 4360 w
+(\347)1762 4260 w
+(\347)1762 4160 w
+(\347)1762 4060 w
+(\347)1762 3960 w
+(\347)1762 3860 w
+(\347)1762 3760 w
+(\347)1762 3660 w
+(\347)1762 3560 w
+(\347)1762 3460 w
+(\347)1762 3360 w
+(\347)1762 3260 w
+(\347)1762 3160 w
+(\347)1762 3060 w
+(\347)1762 2960 w
+%INFO[SECTION: LEVEL = 1, NUMBER = 2.  , HEADING = Proposing Candidate Corrections]
+9 B f
+( Candidate Corrections)2 901(2. Proposing)1 504 2 720 5840 t
+10 R f
+(The \256rst stage of)3 674 1 720 6390 t
+10 I f
+(correct)1419 6390 w
+10 R f
+(searches a wordlist to \256nd candidate corrections that differ from the input)11 2947 1 1733 6390 t
+8 S1 f
+(__________________)720 6570 w
+8 R f
+(0.)720 6690 w
+8 I f
+(???)840 6690 w
+8 R f
+(indicates that no correction was found.)5 1232 1 980 6690 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 3 3
+%%Page: 4 4
+DpostDict begin
+/saveobj save def
+mark
+4 pagesetup
+10 R f
+(- 4 -)2 166 1 2797 880 t
+10 I f
+(typo)720 1760 w
+10 R f
+( wordlist was collected from \256ve)5 1342( The)1 210(by a single insertion, deletion, substitution or reversal.)7 2206 3 922 1760 t
+(sources, the AP newswire, the Unix)5 1538 1 720 1980 t
+10 S f
+(\322)2258 1980 w
+10 I f
+(spell)2384 1980 w
+10 R f
+(program, the)1 531 1 2619 1980 t
+10 I f
+(Cobuild Dictionary)1 802 1 3196 1980 t
+10 R f
+(\(Sinclair)4044 1980 w
+10 I f
+(et al.)1 221 1 4434 1980 t
+10 R f
+(,)4655 1980 w
+(1987\), the)1 440 1 720 2200 t
+10 I f
+(Collins Dictionary of the English Language)5 1929 1 1220 2200 t
+10 R f
+(\(Hanks)3209 2200 w
+10 I f
+(et al)1 210 1 3557 2200 t
+10 R f
+(, 1979\), and)2 547 1 3767 2200 t
+10 I f
+(Roget's)4375 2200 w
+(International Thesaurus, Fourth Edition)3 1621 1 720 2420 t
+10 R f
+( produces the following)3 946( \256rst stage)2 413( This)1 229(\(Chapman, 1977\).)1 725 4 2367 2420 t
+(output, given the input typo,)4 1134 1 720 2640 t
+10 I f
+(acress)1879 2640 w
+10 R f
+(:)2134 2640 w
+10 B f
+(Table 2)1 320 1 2540 3080 t
+10 R f
+(Example of Candidate Corrections)3 1384 1 2008 3300 t
+10 B f
+( Transformation)1 833(Typo Correction)1 858 2 1622 3740 t
+10 S f
+(_ ___________________________________________)1 2156 1 1622 3860 t
+10 R f
+( deletion)1 472( 2)1 260( t)1 178( @)1 436(acress actress)1 664 5 1622 4080 t
+( insertion)1 500( 0)1 238( #)1 248( a)1 460(acress cress)1 592 5 1622 4300 t
+( 0 reversal)2 665( ca)1 242( ac)1 460(acress caress)1 636 4 1622 4520 t
+( substitution)1 618( 2)1 244( c)1 253( r)1 394(acress access)1 647 5 1622 4740 t
+( substitution)1 618( 3)1 238( o)1 248( e)1 410(acress across)1 642 5 1622 4960 t
+( insertion)1 500( 4)1 238( #)1 253( s)1 450(acress acres)1 597 5 1622 5180 t
+( insertion)1 500( 5)1 238( #)1 253( s)1 450(acress acres)1 597 5 1622 5400 t
+(The candidate)1 565 1 720 6060 t
+10 I f
+(actress)1313 6060 w
+10 R f
+(, for example, can be mistyped as)6 1354 1 1596 6060 t
+10 I f
+(acress)2978 6060 w
+10 R f
+(by deleting the)2 600 1 3261 6060 t
+10 I f
+(t)3889 6060 w
+10 R f
+( The)1 209(at position 2.)2 526 2 3945 6060 t
+(symbols)720 6280 w
+10 I f
+(@)1087 6280 w
+10 R f
+(and)1212 6280 w
+10 I f
+(#)1389 6280 w
+10 R f
+( of view of the)4 610( transformations are named from the point)6 1734( \(The)1 246(represent nulls.)1 618 4 1472 6280 t
+( typo,)1 229( The)1 206( the typo.\))2 410(correct word, not)2 684 4 720 6500 t
+10 I f
+(acress)2275 6500 w
+10 R f
+(, can arise from)3 623 1 2530 6500 t
+10 I f
+(acres)3179 6500 w
+10 R f
+(by insertion of)2 585 1 3421 6500 t
+10 I f
+(s)4032 6500 w
+10 R f
+(after either the)2 583 1 4097 6500 t
+( \256fth letter, so)3 627(fourth or the)2 545 2 720 6720 t
+10 I f
+(acres)1939 6720 w
+10 R f
+( This)1 250(appears twice in the table as a candidate correction.)8 2228 2 2202 6720 t
+( do)1 134(unusually dif\256cult example was selected to illustrate the four transformations; most examples)11 3826 2 720 6940 t
+(not have so many high-scoring possibilities.)5 1761 1 720 7160 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 4 4
+%%Page: 5 5
+DpostDict begin
+/saveobj save def
+mark
+5 pagesetup
+10 R f
+(- 5 -)2 166 1 2797 880 t
+( transformations very straightforwardly by trying all the)7 2366(In principle, one could implement the)5 1594 2 720 1760 t
+( requires)1 358( It)1 123( operation is actually implemented this way.)6 1840( insertion)1 388(possibilities. The)1 722 5 720 1980 t
+10 I f
+(n)4188 1980 w
+10 R f
+(dictionary)4275 1980 w
+(accesses to see if the)4 869 1 720 2200 t
+10 I f
+(n)1625 2200 w
+7 I f
+(th)1686 2160 w
+10 R f
+( the deletion)2 518( Unfortunately,)1 647( the typo may have been inserted.)6 1411(letter in)1 319 4 1785 2200 t
+( more expensive; there are 26 letters that might have been deleted in)12 2962(operation is much)2 758 2 720 2420 t
+10 I f
+(n)4485 2420 w
+10 S f
+(+)4559 2420 w
+10 R f
+(1)4630 2420 w
+( order to reduce the number of dictionary accesses, the system makes use of a)14 3417(positions. In)1 543 2 720 2640 t
+(precomputed table of the form:)4 1242 1 720 2860 t
+10 B f
+(Table 3)1 320 1 2540 3300 t
+10 R f
+(An Example from the Deletion Table)5 1489 1 1955 3520 t
+10 B f
+(Key Correction)1 787 1 2306 3960 t
+10 S f
+(_ _______________)1 787 1 2306 4080 t
+10 R f
+( 4)1 329(grea t)1 350 2 2306 4300 t
+( 3)1 313(gret a)1 358 2 2314 4520 t
+( 2)1 313(grat e)1 358 2 2314 4740 t
+( 1)1 324(geat r)1 352 2 2309 4960 t
+( 0)1 307(reat g)1 361 2 2317 5180 t
+( this table, the system can check for)7 1495( With)1 259(This table maps words missing a letter to corrections.)8 2206 3 720 5840 t
+( also useful for checking for substitutions and reversals.)8 2243( table is)2 317( The)1 208(deletions in one table lookup.)4 1192 4 720 6060 t
+( deletion table has about a million entries, approximately)8 2337( The)1 213( space.)1 279(Of course, there is a cost in)6 1131 4 720 6280 t
+( hashing methods)2 710( deletion table is stored using heuristic)6 1574( The)1 211(ten times as many as the dictionary.)6 1465 4 720 6500 t
+(very similar to those in)4 922 1 720 6720 t
+10 I f
+(spell)1667 6720 w
+10 R f
+(.)1856 6720 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 5 5
+%%Page: 6 6
+DpostDict begin
+/saveobj save def
+mark
+6 pagesetup
+10 R f
+(- 6 -)2 166 1 2797 880 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 3.  , HEADING = Scoring]
+9 B f
+(3. Scoring)1 409 1 720 1760 t
+10 R f
+(Two versions of)2 665 1 720 2310 t
+10 I f
+(correct)1418 2310 w
+10 R f
+( We)1 197( studied: one with context and the other without context.)9 2335(have been)1 409 3 1739 2310 t
+(discuss the simpler no-context version \256rst.)5 1738 1 720 2530 t
+(Each candidate correction is scored by the Bayesian combination rule)9 2906 1 720 2970 t
+10 I f
+(Pr)3666 2970 w
+10 R f
+(\()3774 2970 w
+10 I f
+(c)3815 2970 w
+10 R f
+(\))3867 2970 w
+10 I f
+(Pr)3949 2970 w
+10 R f
+(\()4057 2970 w
+10 I f
+(t)4098 2970 w
+10 S f
+(\357)4126 2987 w
+10 I f
+(c)4174 2970 w
+10 R f
+(\), and then)2 454 1 4226 2970 t
+( must be taken in estimating)5 1130( Care)1 240(normalized by the sum of the scores for all proposed candidates.)10 2590 3 720 3190 t
+( a proposed)2 514( is possible \(and even likely\) that)6 1477( It)1 137(the prior because of sparse data problems.)6 1832 4 720 3410 t
+( methods of estimating the prior)5 1365( Some)1 295( in the training set.)4 815(correction might not have appeared)4 1485 4 720 3630 t
+( example, the maximum likelihood estimate)5 1820( For)1 202( undesirable results in this case.)5 1330(would produce)1 608 4 720 3850 t
+(\(MLE\) would estimate)2 970 1 720 4070 t
+10 I f
+(Pr)1745 4070 w
+10 R f
+(\()1853 4070 w
+10 I f
+(c)1894 4070 w
+10 R f
+(\))1946 4070 w
+10 S f
+(=)2036 4070 w
+10 R f
+(0, and consequently, many candidate corrections would be)7 2540 1 2140 4070 t
+( We)1 195( training set \(the 1988 AP corpus\).)6 1421(rejected just because they did not happen to appear in the)10 2344 3 720 4290 t
+(will encounter even more severe forms of the sparse data problem when we consider context.)14 3721 1 720 4510 t
+( with the sparse data problems in three)7 1714(We will consider three estimation methods that deal)7 2246 2 720 4950 t
+( set of probabilities,)3 818( of these methods attempt to estimate a)7 1620( All)1 187(different ways.)1 607 4 720 5170 t
+10 I f
+(p)3985 5170 w
+10 R f
+(, from observed)2 645 1 4035 5170 t
+(frequencies,)720 5390 w
+10 I f
+(r)1240 5390 w
+10 R f
+( is assumed that the observed frequencies are generated by a binomial process)12 3253(. It)1 148 2 1279 5390 t
+(with)720 5610 w
+10 I f
+(N)926 5610 w
+10 R f
+( estimation methods generate an adjusted frequency)6 2080( The)1 207(total observations.)1 735 3 1021 5610 t
+10 I f
+(r *)1 97 1 4070 5610 t
+10 R f
+(, where)1 295 1 4167 5610 t
+10 I f
+(r *)1 97 1 4489 5610 t
+10 R f
+(is)4613 5610 w
+(a function of)2 612 1 720 5830 t
+10 I f
+(r)1409 5830 w
+10 R f
+(. Once)1 337 1 1448 5830 t
+10 I f
+(r *)1 97 1 1862 5830 t
+10 R f
+(has been determined, then)3 1198 1 2036 5830 t
+10 I f
+(p)3311 5830 w
+10 R f
+(is estimated as)2 687 1 3438 5830 t
+10 I f
+(p)4202 5830 w
+10 S f
+(~)4293 5810 w
+(~)4293 5835 w
+10 I f
+(r * / N *)4 266 1 4389 5830 t
+10 R f
+(.)4655 5830 w
+10 I f
+(N *)1 125 1 720 6050 t
+10 S f
+(=)894 6050 w
+15 S f
+(S)1014 6080 w
+10 I f
+( N)1 108(r *)1 97 2 1160 6050 t
+7 I f
+(r)1376 6070 w
+10 R f
+(where)1474 6050 w
+10 I f
+(N)1780 6050 w
+7 I f
+(r)1858 6070 w
+10 R f
+(is the frequency of frequency)4 1320 1 1956 6050 t
+10 I f
+(r)3339 6050 w
+10 R f
+(,)3378 6050 w
+7 R f
+(2)3403 6010 w
+10 R f
+( the estimated)2 633(assuring that)1 546 2 3501 6050 t
+( maximum likelihood estimator \(MLE\) sets)5 1851( The)1 228(probabilities add to one.)3 1035 3 720 6280 t
+10 I f
+(r *)1 97 1 3881 6280 t
+10 S f
+(=)4027 6280 w
+10 I f
+(r)4131 6280 w
+10 R f
+( MLE)1 258(. The)1 252 2 4170 6280 t
+(estimate is particularly poor when)4 1371 1 720 6500 t
+10 I f
+(r)2119 6500 w
+10 S f
+(=)2207 6500 w
+10 R f
+( than 0)2 280(0, since the true probabilities are probability greater)7 2089 2 2311 6500 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 6 6
+%%Page: 7 7
+DpostDict begin
+/saveobj save def
+mark
+7 pagesetup
+10 R f
+(- 7 -)2 166 1 2797 880 t
+(in this case.)2 469 1 720 1760 t
+( posterior)1 399(Following Box and Tiao \(1973\), we can assume an uninformative prior and reach a)13 3561 2 720 2200 t
+(distribution for)1 612 1 720 2420 t
+10 I f
+(p)1366 2420 w
+10 R f
+( the expectation of this distribution amounts to using)8 2170(. Using)1 323 2 1416 2420 t
+10 I f
+(r *)1 97 1 3942 2420 t
+10 S f
+(=)4088 2420 w
+10 I f
+(r)4192 2420 w
+10 S f
+(+)4255 2420 w
+10 R f
+( We)1 196(0. 5.)1 158 2 4326 2420 t
+( third method is the Good-Turing \(GT\))6 1680( The)1 226(call this the expected likelihood estimate \(ELE\).)6 2054 3 720 2640 t
+( method sets)2 508( This)1 232(method \(Good, 1953\).)2 896 3 720 2860 t
+10 I f
+(r *)1 97 1 2385 2860 t
+10 S f
+(=)2531 2860 w
+10 R f
+(\()2635 2860 w
+10 I f
+(r)2676 2860 w
+10 S f
+(+)2739 2860 w
+10 R f
+(1 \))1 91 1 2810 2860 t
+10 I f
+(N)2950 2860 w
+7 I f
+(r)3028 2880 w
+7 S f
+(+)3071 2880 w
+7 R f
+(1)3121 2880 w
+10 I f
+(/ N)1 103 1 3172 2860 t
+7 I f
+(r)3286 2880 w
+10 R f
+( the MLE, both ELE and)5 1008(. Unlike)1 351 2 3321 2860 t
+( assign nonzero probabilities, even when)5 1775(GT estimates)1 559 2 720 3080 t
+10 I f
+(r)3109 3080 w
+10 S f
+(=)3197 3080 w
+10 R f
+( is probably a desirable)4 1046(0. This)1 333 2 3301 3080 t
+(property.)720 3300 w
+(The prior,)1 416 1 720 3740 t
+10 I f
+(Pr)1178 3740 w
+10 R f
+(\()1286 3740 w
+10 I f
+(c)1327 3740 w
+10 R f
+(\), estimated by the ELE, is \()6 1223 1 1379 3740 t
+10 I f
+(freq)2626 3740 w
+10 R f
+(\()2795 3740 w
+10 I f
+(c)2836 3740 w
+10 R f
+(\))2888 3740 w
+10 S f
+(+)2978 3740 w
+10 R f
+(0. 5 \))2 174 1 3082 3740 t
+10 I f
+(/)3264 3740 w
+10 R f
+(\()3300 3740 w
+10 I f
+(N)3341 3740 w
+10 S f
+(+)3457 3740 w
+10 I f
+(V /)1 97 1 3561 3740 t
+10 R f
+( where)1 285(2 \),)1 116 2 3666 3740 t
+10 I f
+(freq)4110 3740 w
+10 R f
+(\()4279 3740 w
+10 I f
+(c)4320 3740 w
+10 R f
+(\) is the)2 308 1 4372 3740 t
+( the proposed correction)3 997(number of times that)3 863 2 720 3960 t
+10 I f
+(c)2615 3960 w
+10 R f
+(appears in the 1988 AP corpus \()6 1341 1 2694 3960 t
+10 I f
+(N)4035 3960 w
+10 S f
+(=)4151 3960 w
+10 R f
+(44 million)1 425 1 4255 3960 t
+( size,)1 218(words, and the vocabulary)3 1089 2 720 4180 t
+10 I f
+(V)2065 4180 w
+10 R f
+( we have discussed problems with the)6 1587( Although)1 441(, is 112964\).)2 526 3 2126 4180 t
+(ELE elsewhere \(Gale and Church, 1990\), it will be used here.)10 2458 1 720 4400 t
+(The channel probabilities,)2 1058 1 720 4840 t
+10 I f
+(Pr)1812 4840 w
+10 R f
+(\()1920 4840 w
+10 I f
+(t)1961 4840 w
+10 S f
+(\357)1989 4857 w
+10 I f
+(c)2037 4840 w
+10 R f
+( confusion matrices \(presented in the)5 1522(\), are computed from four)4 1069 2 2089 4840 t
+( of this work\): \(1\))4 742(appendix so as to encourage replication)5 1622 2 720 5060 t
+10 I f
+(del)3117 5060 w
+10 R f
+([)3247 5060 w
+10 I f
+(x)3288 5060 w
+10 R f
+(,)3340 5060 w
+10 I f
+(y)3373 5060 w
+10 R f
+(], the number of times that the)6 1255 1 3425 5060 t
+(characters)720 5280 w
+10 I f
+(xy)1150 5280 w
+10 R f
+(\(in the correct word\) were typed as)6 1407 1 1265 5280 t
+10 I f
+(x)2699 5280 w
+10 R f
+(in the training set, \(2\),)4 896 1 2770 5280 t
+10 I f
+(add)3693 5280 w
+10 R f
+([)3851 5280 w
+10 I f
+(x)3892 5280 w
+10 R f
+(,)3944 5280 w
+10 I f
+(y)3977 5280 w
+10 R f
+( number of)2 444(], the)1 207 2 4029 5280 t
+(times that)1 406 1 720 5500 t
+10 I f
+(x)1165 5500 w
+10 R f
+(was typed as)2 538 1 1248 5500 t
+10 I f
+(xy)1825 5500 w
+10 R f
+(, \(3\))1 180 1 1913 5500 t
+10 I f
+(sub)2131 5500 w
+10 R f
+([)2278 5500 w
+10 I f
+(x)2319 5500 w
+10 R f
+(,)2371 5500 w
+10 I f
+(y)2404 5500 w
+10 R f
+(], the number of times that)5 1125 1 2456 5500 t
+10 I f
+(y)3619 5500 w
+10 R f
+(was typed as)2 536 1 3701 5500 t
+10 I f
+(x)4275 5500 w
+10 R f
+(, and \(4\))2 361 1 4319 5500 t
+10 I f
+(rev)720 5720 w
+10 R f
+([)855 5720 w
+10 I f
+(x)896 5720 w
+10 R f
+(,)948 5720 w
+10 I f
+(y)981 5720 w
+10 R f
+(], the number of times that)5 1140 1 1033 5720 t
+10 I f
+(xy)2214 5720 w
+10 R f
+(was typed as)2 542 1 2343 5720 t
+10 I f
+(yx)2926 5720 w
+10 R f
+( from these)2 483( are estimated)2 586(. Probabilities)1 597 3 3014 5720 t
+(matrices by dividing by)3 956 1 720 5940 t
+10 I f
+(chars)1704 5940 w
+10 R f
+([)1934 5940 w
+10 I f
+(x)1975 5940 w
+10 R f
+(,)2027 5940 w
+10 I f
+(y)2060 5940 w
+10 R f
+(] or)1 144 1 2112 5940 t
+10 I f
+(chars)2284 5940 w
+10 R f
+([)2514 5940 w
+10 I f
+(x)2555 5940 w
+10 R f
+(], the number of times that)5 1075 1 2607 5940 t
+10 I f
+(xy)3710 5940 w
+10 R f
+(and)3825 5940 w
+10 I f
+(x)3996 5940 w
+10 R f
+(appeared in the)2 613 1 4067 5940 t
+( four confusion matrices are)4 1203( the following formula shows, these)5 1532( As)1 181(training set, respectively.)2 1044 4 720 6160 t
+(normalized by)1 576 1 720 6380 t
+10 I f
+(chars)1323 6380 w
+10 R f
+([)1553 6380 w
+10 I f
+(x)1594 6380 w
+10 R f
+(,)1646 6380 w
+10 I f
+(y)1679 6380 w
+10 R f
+(] and)1 204 1 1731 6380 t
+10 I f
+(chars)1962 6380 w
+10 R f
+([)2192 6380 w
+10 I f
+(x)2233 6380 w
+10 R f
+( of times that)3 528(], the number)2 539 2 2285 6380 t
+10 I f
+(xy)3378 6380 w
+10 R f
+(and)3492 6380 w
+10 I f
+(x)3662 6380 w
+10 R f
+(appeared in the training)3 948 1 3732 6380 t
+8 S1 f
+(__________________)720 6560 w
+8 R f
+( formally,)1 313(2. More)1 292 2 720 6680 t
+8 I f
+(N)1345 6680 w
+5 I f
+(r)1407 6696 w
+8 R f
+(is the number of types that have frequency)7 1353 1 1453 6680 t
+8 I f
+(r)2826 6680 w
+8 R f
+(.)2857 6680 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 7 7
+%%Page: 8 8
+DpostDict begin
+/saveobj save def
+mark
+8 pagesetup
+10 R f
+(- 8 -)2 166 1 2797 880 t
+( easily)1 285( matrices are not included in the appendix since they can be)11 2667( These)1 314(set, respectively.)1 694 4 720 1760 t
+(replicated.)720 1980 w
+10 I f
+(Pr)720 2705 w
+10 R f
+(\()828 2705 w
+10 I f
+(t)869 2705 w
+10 S f
+(\357)897 2722 w
+10 I f
+(c)945 2705 w
+10 R f
+(\))997 2705 w
+10 S f
+(~)1079 2685 w
+(~)1079 2710 w
+(\354)1183 2418 w
+(\357)1183 2518 w
+(\357)1183 2618 w
+(\355)1183 2718 w
+(\357)1183 2818 w
+(\357)1183 2918 w
+(\356)1183 3018 w
+10 I f
+(rev)1232 2945 w
+10 R f
+([)1367 2945 w
+10 I f
+(c)1408 2945 w
+7 I f
+(p)1463 2965 w
+10 R f
+(,)1514 2945 w
+10 I f
+(c)1580 2945 w
+7 I f
+(p)1635 2965 w
+7 S f
+(+)1686 2965 w
+7 R f
+(1)1736 2965 w
+10 R f
+(])1787 2945 w
+10 I f
+(/ chars)1 258 1 1828 2945 t
+10 R f
+([)2094 2945 w
+10 I f
+(c)2135 2945 w
+7 I f
+(p)2190 2965 w
+10 R f
+(,)2241 2945 w
+10 I f
+(c)2307 2945 w
+7 I f
+(p)2362 2965 w
+7 S f
+(+)2413 2965 w
+7 R f
+(1)2463 2965 w
+10 R f
+(])2514 2945 w
+10 I f
+(sub)1232 2785 w
+10 R f
+([)1379 2785 w
+10 I f
+(t)1420 2785 w
+7 I f
+(p)1459 2805 w
+10 R f
+(,)1510 2785 w
+10 I f
+(c)1576 2785 w
+7 I f
+(p)1631 2805 w
+10 R f
+(])1682 2785 w
+10 I f
+(/ chars)1 258 1 1723 2785 t
+10 R f
+([)1989 2785 w
+10 I f
+(c)2030 2785 w
+7 I f
+(p)2085 2805 w
+10 R f
+(])2136 2785 w
+10 I f
+(add)1232 2625 w
+10 R f
+([)1390 2625 w
+10 I f
+(c)1431 2625 w
+7 I f
+(p)1486 2645 w
+7 S f
+(-)1537 2645 w
+7 R f
+(1)1587 2645 w
+10 R f
+(,)1638 2625 w
+10 I f
+(t)1704 2625 w
+7 I f
+(p)1743 2645 w
+10 R f
+(])1794 2625 w
+10 I f
+(/ chars)1 258 1 1835 2625 t
+10 R f
+([)2101 2625 w
+10 I f
+(c)2142 2625 w
+7 I f
+(p)2197 2645 w
+7 S f
+(-)2248 2645 w
+7 R f
+(1)2298 2645 w
+10 R f
+(])2349 2625 w
+10 I f
+(del)1232 2465 w
+10 R f
+([)1362 2465 w
+10 I f
+(c)1403 2465 w
+7 I f
+(p)1458 2485 w
+7 S f
+(-)1509 2485 w
+7 R f
+(1)1559 2485 w
+10 R f
+(,)1610 2465 w
+10 I f
+(c)1676 2465 w
+7 I f
+(p)1731 2485 w
+10 R f
+(])1782 2465 w
+10 I f
+(/ chars)1 258 1 1823 2465 t
+10 R f
+([)2089 2465 w
+10 I f
+(c)2130 2465 w
+7 I f
+(p)2185 2485 w
+7 S f
+(-)2236 2485 w
+7 R f
+(1)2286 2485 w
+10 R f
+(,)2337 2465 w
+10 I f
+(c)2403 2465 w
+7 I f
+(p)2458 2485 w
+10 R f
+(])2509 2465 w
+(if reversal)1 417 1 2695 2925 t
+(if substitution)1 570 1 2695 2785 t
+(if insertion)1 452 1 2695 2645 t
+(if deletion)1 424 1 2695 2505 t
+(In this formula,)2 655 1 720 3450 t
+10 I f
+(c)1418 3450 w
+7 I f
+(p)1473 3470 w
+10 R f
+(is the)1 232 1 1559 3450 t
+10 I f
+(p)1834 3450 w
+7 I f
+(th)1895 3410 w
+10 R f
+(character of the proposed correction,)4 1536 1 2001 3450 t
+10 I f
+(c)3580 3450 w
+10 R f
+(. Likewise,)1 485 1 3624 3450 t
+10 I f
+(t)4153 3450 w
+7 I f
+(p)4192 3470 w
+10 R f
+(is the)1 233 1 4279 3450 t
+10 I f
+(p)4556 3450 w
+7 I f
+(th)4617 3410 w
+10 R f
+(character of the typo,)3 892 1 720 3670 t
+10 I f
+(t)1652 3670 w
+10 R f
+( matrices are computed with a bootstrapping procedure.)7 2321( confusion)1 434(. The)1 245 3 1680 3670 t
+( run the program over)4 906( Then)1 264( possible confusions.)2 854(Initially assume a uniform distribution over the)6 1936 4 720 3890 t
+(the training set to \256nd corrections for the words that)9 2114 1 720 4110 t
+10 I f
+(spell)2863 4110 w
+10 R f
+( corrections to update)3 871( these)1 234(rejects. Use)1 494 3 3081 4110 t
+( method)1 327( probabilities are estimated using the Good-Turing)6 2026( The)1 206(the confusion matrices, and iterate.)4 1401 4 720 4330 t
+(\(Good, 1953\), with the cells of the matrices as the types.)10 2255 1 720 4550 t
+(Returning to the)2 650 1 720 4990 t
+10 I f
+(acress)1395 4990 w
+10 R f
+( scored by multiplying the)4 1054(example, the seven proposed transformations are)5 1951 2 1675 4990 t
+( in the table below\) and the channel)7 1520(prior probability \(which is proportional to 0.5 + column 4)9 2440 2 720 5210 t
+( 3\), which are normalized to produce)6 1657(probability \(column 5\) to form a raw score \(column)8 2303 2 720 5430 t
+( \256nal results are:)3 684( The)1 212(probabilities \(column 2\).)2 1005 3 720 5650 t
+10 I f
+(acres)2652 5650 w
+10 R f
+(\(45%\),)2899 5650 w
+10 I f
+(actress)3204 5650 w
+10 R f
+(\(37%\),)3518 5650 w
+10 I f
+(across)3823 5650 w
+10 R f
+(\(18%\),)4115 5650 w
+10 I f
+(access)4420 5650 w
+10 R f
+(\(0%\),)720 5870 w
+10 I f
+(caress)975 5870 w
+10 R f
+(\(0%\),)1261 5870 w
+10 I f
+(cress)1516 5870 w
+10 R f
+( very hard; in fact, the second choice is probably)9 2003( example is)2 467(\(0%\). This)1 458 3 1752 5870 t
+(right, as can be seen from the context:)7 1701 1 720 6090 t
+10 I f
+(...was called a ``stellar and versatile)5 1596 1 2472 6090 t
+10 B f
+(acress)4119 6090 w
+10 I f
+(whose)4430 6090 w
+( and glamour has de\256ned her....)5 1299(combination of sass)2 803 2 720 6310 t
+10 R f
+(The program would need a much better prior)7 1828 1 2852 6310 t
+( we consider context, we will show how the program can)10 2286( When)1 289(model in order to handle this case.)6 1385 3 720 6530 t
+(take advantage of the fact that)5 1199 1 720 6750 t
+10 I f
+(actress)1944 6750 w
+10 R f
+(is more likely than)3 747 1 2252 6750 t
+10 I f
+(acres)3024 6750 w
+10 R f
+(in the context of)3 652 1 3265 6750 t
+10 I f
+(whose)3942 6750 w
+10 R f
+(.)4192 6750 w
+10 B f
+(Table 4)1 320 1 2540 7190 t
+10 R f
+(Example of Rating Candidate Corrections without Context)6 2349 1 1525 7410 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 8 8
+%%Page: 9 9
+DpostDict begin
+/saveobj save def
+mark
+9 pagesetup
+10 R f
+(- 9 -)2 166 1 2797 880 t
+10 B f
+( freq\(cor\) Pr\(typo)2 1008( Score)1 263( Raw)1 344(cor %)1 521 4 1469 1760 t
+10 S f
+(\357)3605 1760 w
+10 B f
+(cor\))3654 1760 w
+10 S f
+(_ _________________________________________________)1 2462 1 1469 1880 t
+10 R f
+( 55./470,000)1 769( 1343)1 581( .157)1 466(actress 37)1 521 4 1469 2100 t
+( 46./32,000,000)1 894( 0)1 581( .000)1 466(cress 0)1 521 4 1469 2320 t
+( .95/580,000)1 769( 4)1 581( .000)1 466(caress 0)1 521 4 1469 2540 t
+( .98/4,700,000)1 844( 2280)1 581( .000)1 466(access 0)1 521 4 1469 2760 t
+( 93./10,000,000)1 894( 8436)1 581( .077)1 466(across 18)1 521 4 1469 2980 t
+( 417./13,000,000)1 894( 2879)1 581( .092)1 466(acres 21)1 521 4 1469 3200 t
+( 205./6,000,000)1 844( 2879)1 581( .098)1 466(acres 23)1 521 4 1469 3420 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 4.  , HEADING = Evaluation]
+9 B f
+(4. Evaluation)1 534 1 720 4300 t
+10 R f
+(Many typos such as)3 797 1 720 4850 t
+10 I f
+(absorbant)1544 4850 w
+10 R f
+( candidate correction, but others such as)6 1617(have just one)2 531 2 1977 4850 t
+10 I f
+(adusted)4153 4850 w
+10 R f
+(have)4492 4850 w
+( 5 shows examples of typos with less than ten candidate corrections.)11 2834( Table)1 288(multiple corrections.)1 838 3 720 5070 t
+(The candidate corrections are ordered by likelihood.)6 2086 1 720 5290 t
+10 B f
+(Table 5)1 320 1 2540 5730 t
+10 R f
+(Examples of Typos with Various Numbers of Candidate Corrections)8 2741 1 1329 5950 t
+10 B f
+( Corrections)1 987(# Typo)1 323 2 720 6390 t
+10 S f
+(_ _________________________________________________________________________)1 3686 1 720 6510 t
+10 R f
+(0 admininistration)1 756 1 720 6730 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 9 9
+%%Page: 10 10
+DpostDict begin
+/saveobj save def
+mark
+10 pagesetup
+10 R f
+(- 10 -)2 216 1 2772 880 t
+( absorbent)1 706(1 absorbant)1 488 2 720 1760 t
+( dusted)1 286( adjusted)1 734(2 adusted)1 405 3 720 1980 t
+( ambitions ambition)2 801( ambitious)1 756(3 ambitios)1 445 3 720 2200 t
+( compactability comparability computability)3 1780( compatibility)1 690(4 compatability)1 650 3 720 2420 t
+( fate aft ate ante)4 636( after)1 739(5 afte)1 249 3 720 2640 t
+( diary dials dial dimly dilly)5 1087( daily)1 706(6 dialy)1 300 3 720 2860 t
+( price voice poise pice ponce poire)6 1385( police)1 734(7 poice)1 316 3 720 3080 t
+( pivots riots plots pits pots pints pious)7 1517( pilots)1 734(8 piots)1 295 3 720 3300 t
+( smash slash spasm stash swash sash pash spas)8 1871( splash)1 734(9 spash)1 322 3 720 3520 t
+( table below shows the number of)6 1474( The)1 226( few candidate corrections.)3 1137(Most typos have relatively)3 1123 4 720 4180 t
+(typos)720 4400 w
+7 R f
+(3)937 4360 w
+10 R f
+( number of corrections in seven month-long samples of the AP newswire.)11 2973(broken out by the)3 708 2 999 4400 t
+( example, there were 720 typos with 0 corrections, 1120 typos with 1 correction, 269)14 3420(In March, for)2 540 2 720 4620 t
+( \256nal column shows that there is a general trend for fewer choices,)12 2796( The)1 217( corrections, etc.)2 683(with 2)1 264 4 720 4840 t
+( trained on the AP wire from 2/88 - 2/89; the)10 1807( system was)2 489( \(The)1 241(though the 0-choice case is special.)5 1423 4 720 5060 t
+(results below were computed from AP wire during 3/89 - 9/89\).)10 2549 1 720 5280 t
+10 B f
+(Table 6)1 320 1 2540 5720 t
+10 R f
+(Number of Typos by Month and Number of Candidate Corrections)9 2677 1 1361 5940 t
+8 S1 f
+(__________________)720 6529 w
+8 R f
+( the purposes of this experiment, a typo is a lowercase word rejected by the Unix)15 2571(3. For)1 231 2 720 6649 t
+8 S f
+(\322)3522 6649 w
+8 R f
+(spell program.)1 459 1 3605 6649 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 10 10
+%%Page: 11 11
+DpostDict begin
+/saveobj save def
+mark
+11 pagesetup
+10 R f
+(- 11 -)2 216 1 2772 880 t
+10 B f
+( Total)1 407( Sept)1 355( Aug)1 347( July)1 342( May June)2 706( April)1 378(# March)1 577 7 1176 1760 t
+10 S f
+(_ ________________________________________________________________)1 3225 1 1087 1880 t
+10 B f
+(0)1173 2100 w
+10 R f
+( 3937)1 425( 465 508)2 700( 606 492)2 706( 542)1 364(720 604)1 558 5 1559 2100 t
+10 B f
+(1)1173 2320 w
+10 R f
+( 6993)1 425( 944 930)2 700( 958)1 353( 1007)1 353( 1037)1 364(1120 997)1 608 6 1509 2320 t
+10 B f
+(2)1173 2540 w
+10 R f
+( 1562)1 425( 224 214)2 700( 223 199)2 706( 209)1 364(269 224)1 558 5 1559 2540 t
+10 B f
+(3)1173 2760 w
+10 R f
+( 639)1 425( 87 82)2 700( 79)1 353( 101)1 353( 89)1 364(109 92)1 558 6 1559 2760 t
+10 B f
+(4)1173 2980 w
+10 R f
+( 367)1 425( 59 43)2 700( 45 43)2 706( 62)1 364(58 57)1 508 5 1609 2980 t
+10 B f
+(5)1173 3200 w
+10 R f
+( 221)1 425( 24 28)2 700( 26 28)2 706( 20)1 364(54 41)1 508 5 1609 3200 t
+10 B f
+(6)1173 3420 w
+10 R f
+( 157)1 425( 17 23)2 700( 19 22)2 706( 19)1 364(35 22)1 508 5 1609 3420 t
+10 B f
+(7)1173 3640 w
+10 R f
+( 94)1 425( 15 17)2 700( 11)1 353( 7)1 353( 13)1 364(20 11)1 508 6 1609 3640 t
+10 B f
+(8)1173 3860 w
+10 R f
+( 82)1 425( 16)1 350( 7)1 350( 5 7)2 706( 14)1 364(19 14)1 508 6 1609 3860 t
+10 B f
+(9)1173 4080 w
+10 R f
+( 77)1 425( 16)1 350( 8)1 350( 11 10)2 706( 6)1 364(15 11)1 508 6 1609 4080 t
+10 B f
+(10+)1123 4300 w
+10 R f
+( 613)1 425( 77 78)2 700( 75 53)2 706( 79)1 364(154 97)1 558 5 1559 4300 t
+10 S f
+(_ ________________________________________________________________)1 3225 1 1087 4420 t
+10 B f
+(Total)1087 4640 w
+10 R f
+( 1927 1955 14,742)3 1125( 2125 1902)2 706( 2090)1 364(2573 2170)1 608 4 1509 4640 t
+10 S f
+(\347)1390 4640 w
+(\347)1390 4540 w
+(\347)1390 4440 w
+(\347)1390 4340 w
+(\347)1390 4240 w
+(\347)1390 4140 w
+(\347)1390 4040 w
+(\347)1390 3940 w
+(\347)1390 3840 w
+(\347)1390 3740 w
+(\347)1390 3640 w
+(\347)1390 3540 w
+(\347)1390 3440 w
+(\347)1390 3340 w
+(\347)1390 3240 w
+(\347)1390 3140 w
+(\347)1390 3040 w
+(\347)1390 2940 w
+(\347)1390 2840 w
+(\347)1390 2740 w
+(\347)1390 2640 w
+(\347)1390 2540 w
+(\347)1390 2440 w
+(\347)1390 2340 w
+(\347)1390 2240 w
+(\347)1390 2140 w
+(\347)1390 2040 w
+(\347)1390 1940 w
+(\347)1390 1840 w
+(\347)1390 1740 w
+(\347)1390 1640 w
+(\347)3962 4640 w
+(\347)3962 4540 w
+(\347)3962 4440 w
+(\347)3962 4340 w
+(\347)3962 4240 w
+(\347)3962 4140 w
+(\347)3962 4040 w
+(\347)3962 3940 w
+(\347)3962 3840 w
+(\347)3962 3740 w
+(\347)3962 3640 w
+(\347)3962 3540 w
+(\347)3962 3440 w
+(\347)3962 3340 w
+(\347)3962 3240 w
+(\347)3962 3140 w
+(\347)3962 3040 w
+(\347)3962 2940 w
+(\347)3962 2840 w
+(\347)3962 2740 w
+(\347)3962 2640 w
+(\347)3962 2540 w
+(\347)3962 2440 w
+(\347)3962 2340 w
+(\347)3962 2240 w
+(\347)3962 2140 w
+(\347)3962 2040 w
+(\347)3962 1940 w
+(\347)3962 1840 w
+(\347)3962 1740 w
+(\347)3962 1640 w
+10 R f
+( scoring)1 321(We decided to look at the 2-candidate case in more detail in order to test how often the top)18 3639 2 720 5300 t
+( given 564 triples and a few)6 1223( judges were)2 544( The)1 225(candidate agreed with a panel of three judges.)7 1968 4 720 5520 t
+(concordance lines:)1 745 1 720 5740 t
+(absurb absorb absurd)2 848 1 720 6400 t
+8 R f
+(527595: \256nancial community . *E* *S* `` It is absurb and probably obscene for any person so engaged to und)19 3509 1 874 6620 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 11 11
+%%Page: 12 12
+DpostDict begin
+/saveobj save def
+mark
+12 pagesetup
+10 R f
+(- 12 -)2 216 1 2772 880 t
+(actuall actual actually)2 870 1 720 1760 t
+8 R f
+(3603767:le in determining whether the defendant actuall will die . *E* *S* In the 1985 decision , the justic)18 3414 1 789 1980 t
+(741671: was Pearl Harbor Day . *E* *S* The day actuall is Dec. 7 . *E* *S* Bush said the extradition Wednes)21 3556 1 760 2200 t
+10 R f
+(The \256rst word of the triple was a)7 1460 1 720 2860 t
+10 I f
+(spell)2228 2860 w
+10 R f
+(reject; the other two were the candidates, sorted by)8 2215 1 2465 2860 t
+( could circle any one of)5 984( They)1 264( judges were given a 5-way forced choice.)7 1746( The)1 214(alphabetical order.)1 752 5 720 3080 t
+( if they)2 319( Alternatively,)1 619(the three words, if they thought that was what the author had intended.)12 3022 3 720 3300 t
+( if)1 94( Finally,)1 367( author had intended something else, they could write down ``other''.)10 2853(thought that the)2 646 4 720 3520 t
+( distribution of responses is shown in the following)8 2098( The)1 211( they could write ``?''.)4 924(they weren't sure,)2 727 4 720 3740 t
+(table.)720 3960 w
+10 B f
+(Table 7)1 320 1 2540 4400 t
+10 R f
+(Distribution of Judges' Responses)3 1369 1 2015 4620 t
+10 B f
+( 3)1 75( Judge)1 406( 2)1 75( Judge)1 406(Judge 1)1 331 5 2567 5060 t
+10 S f
+(_ ______________________________________________)1 2321 1 1539 5180 t
+10 B f
+(choice 0 \(spell error\))3 878 1 1539 5400 t
+10 R f
+( 93)1 481(99 124)1 581 2 2707 5400 t
+10 B f
+(choice 1)1 341 1 1539 5620 t
+10 R f
+(188 176 167)2 1112 1 2657 5620 t
+10 B f
+(choice 2)1 341 1 1539 5840 t
+10 R f
+(175 159 151)2 1112 1 2657 5840 t
+10 B f
+(other)1539 6060 w
+10 R f
+(28 26 30)2 1062 1 2707 6060 t
+10 B f
+(?)1539 6280 w
+10 R f
+( 123)1 481(74 79)1 581 2 2707 6280 t
+10 S f
+(_ ______________________________________________)1 2321 1 1539 6400 t
+10 B f
+(total)1539 6620 w
+10 R f
+(564 564 564)2 1112 1 2657 6620 t
+(It should be clear from the table above that)8 1769 1 720 7280 t
+10 I f
+(spell)2521 7280 w
+10 R f
+( almost 20% of)3 632( In)1 141( many words.)2 557(is rejecting too)2 608 4 2742 7280 t
+(the triples,)1 422 1 720 7500 t
+10 I f
+(correct)1167 7500 w
+10 R f
+(was given a non-problem to correct:)5 1444 1 1480 7500 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 12 12
+%%Page: 13 13
+DpostDict begin
+/saveobj save def
+mark
+13 pagesetup
+10 R f
+(- 13 -)2 216 1 2772 880 t
+(acquirees acquirers acquires)2 1123 1 774 1760 t
+8 R f
+(1434654:be acquirers , as they have been , than acquirees . *E* *S* If the industrials had attracted bids th)19 3362 1 794 1980 t
+10 R f
+(Since we were mostly concerned with evaluating the scoring function, we didn't want to be)14 3960 1 720 2640 t
+(distracted with errors in)3 1035 1 720 2860 t
+10 I f
+(spell)1808 2860 w
+10 R f
+( problems that are beyond the scope of this paper.)9 2228(and other)1 402 2 2050 2860 t
+( consider only those cases where at least two judges circled one of the)13 2934(Therefore, we decided to)3 1026 2 720 3080 t
+( left 332 triples.)3 633( This)1 228(two candidates, and they agreed with each other.)7 1942 3 720 3300 t
+( table shows that this version of)6 1332(The following)1 579 2 720 3740 t
+10 I f
+(correct)2667 3740 w
+10 R f
+(agrees with the majority of the judges in)7 1689 1 2991 3740 t
+( order to help calibrate this result, three inferior methods are)10 2473( In)1 140( interest.)1 351(87% of the 332 cases of)5 996 4 720 3960 t
+( The)1 208(also evaluated.)1 596 2 720 4180 t
+10 I f
+(channel-only)1552 4180 w
+10 R f
+( the larger channel probability)4 1219(method selects the candidate with)4 1360 2 2101 4180 t
+10 I f
+(Pr)720 4400 w
+10 R f
+(\()828 4400 w
+10 I f
+(t)869 4400 w
+10 S f
+(\357)897 4417 w
+10 I f
+(c)945 4400 w
+10 R f
+(\). The)1 279 1 997 4400 t
+10 I f
+(prior-only)1317 4400 w
+10 R f
+(method selects the candidate with the larger prior)7 2076 1 1769 4400 t
+10 I f
+(Pr)3885 4400 w
+10 R f
+(\()3993 4400 w
+10 I f
+(c)4034 4400 w
+10 R f
+( the)1 162(\). Finally,)1 432 2 4086 4400 t
+10 I f
+(chance)720 4620 w
+10 R f
+( following table shows,)3 966( the)1 157( As)1 171(method selects the \256rst candidate.)4 1391 4 1037 4620 t
+10 I f
+(correct)3758 4620 w
+10 R f
+(is signi\256cantly)1 598 1 4082 4620 t
+( table also evaluates the three judges.)6 1573( The)1 220( three alternative methods.)3 1104(better than the)2 599 4 720 4840 t
+7 R f
+(4)4216 4800 w
+10 R f
+(The table)1 389 1 4291 4840 t
+(shows that the judges signi\256cantly out-perform)5 2070 1 720 5060 t
+10 I f
+(correct)2852 5060 w
+10 R f
+(, indicating that there is room for)6 1540 1 3140 5060 t
+( dif\256cult and more time consuming than they)7 1851( three judges found the task more)6 1367(improvement. All)1 742 3 720 5280 t
+( judge spent about half a day grading the 564 triples.)10 2100( Each)1 249(had expected.)1 548 3 720 5500 t
+10 B f
+(Table 8)1 320 1 2540 5940 t
+10 R f
+(Performance without Context)2 1182 1 2109 6160 t
+8 S1 f
+(__________________)720 6349 w
+8 R f
+( which the other two judges agreed on ``1'' or ``2.'')10 1648( were only scored on triples for which they selected ``1'' or ``2,'' and for)14 2335(4. Judges)1 337 3 720 6469 t
+( agreed with the other two and ``incorrect'' if that judge disagreed with the)13 2393(A triple was scored ``correct'' for one judge if that judge)10 1807 2 840 6559 t
+(other two.)1 323 1 840 6649 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 13 13
+%%Page: 14 14
+DpostDict begin
+/saveobj save def
+mark
+14 pagesetup
+10 R f
+(- 14 -)2 216 1 2772 880 t
+10 B f
+( %)1 347(Method Discrimination)1 1310 2 1805 1760 t
+7 B f
+(6)3462 1720 w
+10 S f
+(_ ___________________________________)1 1790 1 1805 1880 t
+10 I f
+(correct)1805 2100 w
+10 R f
+(286/329 87)1 734 1 2631 2100 t
+10 S f
+(\261)3390 2100 w
+10 R f
+(1.9)3470 2100 w
+( 80)1 406(channel-only 263/329)1 1154 2 1805 2320 t
+10 S f
+(\261)3390 2320 w
+10 R f
+(2.2)3470 2320 w
+( 75)1 406(prior-only 247/329)1 1154 2 1805 2540 t
+10 S f
+(\261)3390 2540 w
+10 R f
+(2.4)3470 2540 w
+( 52)1 406(chance 172/329)1 1154 2 1805 2760 t
+10 S f
+(\261)3390 2760 w
+10 R f
+(2.8)3470 2760 w
+10 S f
+(_ ___________________________________)1 1790 1 1805 2880 t
+10 R f
+( 99)1 406( 271/273)1 846(Judge 1)1 308 3 1805 3100 t
+10 S f
+(\261)3390 3100 w
+10 R f
+(0.5)3470 3100 w
+( 99)1 406( 271/275)1 846(Judge 2)1 308 3 1805 3320 t
+10 S f
+(\261)3390 3320 w
+10 R f
+(0.7)3470 3320 w
+( 96)1 406( 271/281)1 846(Judge 3)1 308 3 1805 3540 t
+10 S f
+(\261)3390 3540 w
+10 R f
+(1.1)3470 3540 w
+10 S f
+(\347)2401 3540 w
+(\347)2401 3440 w
+(\347)2401 3340 w
+(\347)2401 3240 w
+(\347)2401 3140 w
+(\347)2401 3040 w
+(\347)2401 2940 w
+(\347)2401 2840 w
+(\347)2401 2740 w
+(\347)2401 2640 w
+(\347)2401 2540 w
+(\347)2401 2440 w
+(\347)2401 2340 w
+(\347)2401 2240 w
+(\347)2401 2140 w
+(\347)2401 2040 w
+(\347)2401 1940 w
+(\347)2401 1840 w
+(\347)2401 1740 w
+(\347)2401 1640 w
+10 R f
+( for example, a)3 610( Consider,)1 440( score predicted accuracy.)3 1046(We were also interested in testing whether the)7 1864 4 720 4200 t
+( accuracy would be achieved if)5 1347( Perfect)1 354( average score was 80 percent.)5 1327(group of typos whose)3 932 4 720 4420 t
+( 1 shows a)3 431( Figure)1 315( with the majority opinion of the judges.)7 1639(exactly 80 percent of this group agreed)6 1575 4 720 4640 t
+( horizontal axis shows the)4 1066( The)1 212( this concept, although our data are scanty for this purpose.)10 2427(test of)1 255 4 720 4860 t
+(score from)1 432 1 720 5080 t
+10 I f
+(correct)1180 5080 w
+10 R f
+( the fraction of this)4 776( vertical axis shows)3 794( The)1 208(averaged over a group of 20 typos.)6 1406 4 1496 5080 t
+( diagonal line indicates)3 927( The)1 206( the judges\).)2 493(group that were right \(agreed with the majority opinion of)9 2334 4 720 5300 t
+( show one standard deviation)4 1229( curved lines above and below the perfection line)8 2082(perfection. The)1 649 3 720 5520 t
+(limits for estimating probabilities from samples of 20.)7 2161 1 720 5740 t
+( the methods shown are overcon\256dent when their prediction is between 90 percent and)13 3496(All three of)2 464 2 720 6180 t
+( overcon\256dent over the wider range from about 80 percent)9 2339( channel-only method is)3 969( The)1 207(99 percent.)1 445 4 720 6400 t
+8 S1 f
+(__________________)720 6580 w
+8 R f
+( standard deviations are calculated assuming a binomial distribution of)9 2398(6. The)1 244 2 720 6700 t
+8 I f
+(d)3399 6700 w
+8 R f
+(drawings with probability)2 857 1 3476 6700 t
+8 I f
+(n / d)2 114 1 4370 6700 t
+8 R f
+(, where)1 252 1 4484 6700 t
+8 I f
+(n)4774 6700 w
+8 R f
+(is the)1 188 1 4852 6700 t
+(numerator and)1 461 1 840 6804 t
+8 I f
+(d)1321 6804 w
+8 R f
+( calculation is 100)3 581( The)1 164(is the denominator shown in column two.)6 1322 3 1381 6804 t
+9 S f
+(\326` ````````)1 442 1 3454 6804 t
+8 I f
+(n)3510 6804 w
+8 R f
+(\()3556 6804 w
+8 I f
+(d)3588 6804 w
+8 S f
+(-)3647 6804 w
+8 I f
+(n)3704 6804 w
+8 R f
+(\))3750 6804 w
+8 I f
+(/ d)1 68 1 3782 6804 t
+5 R f
+(3)3858 6772 w
+8 R f
+(.)3902 6804 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 14 14
+%%Page: 15 15
+DpostDict begin
+/saveobj save def
+mark
+15 pagesetup
+10 R f
+(- 15 -)2 216 1 2772 880 t
+( The)1 237( while the prior-only method is overcon\256dent over most of the range.)11 3115(to 99 percent,)2 608 3 720 1760 t
+(observations on)1 631 1 720 1980 t
+10 I f
+(correct)1377 1980 w
+10 R f
+( be)1 119(are outside of the one standard deviation limits about as much as would)12 2870 2 1691 1980 t
+(called for by chance, while each of the other two methods has more points outside than would)16 3960 1 720 2200 t
+( conclude that the scores from)5 1295( We)1 208(result just by chance.)3 903 3 720 2420 t
+10 I f
+(correct)3170 2420 w
+10 R f
+(predict accuracy fairly well;)3 1178 1 3502 2420 t
+(scores from the other two methods are more problematic.)8 2287 1 720 2640 t
+10 B f
+(Poor Estimates of Context Offer Little or No Help)8 2129 1 1635 2860 t
+10 R f
+(chance MLE ELE)2 1264 1 2425 3080 t
+10 S f
+(_ __________________________________________)1 2127 1 1636 3200 t
+10 R f
+( 169)1 480( 15)1 508(wrong 164.5)1 1139 3 1636 3420 t
+( 4)1 480( 136)1 508(uninformative 0)1 1139 3 1636 3640 t
+( 156)1 480( 178)1 508(right 164.5)1 1139 3 1636 3860 t
+10 S f
+(\347)2277 3860 w
+(\347)2277 3780 w
+(\347)2277 3680 w
+(\347)2277 3580 w
+(\347)2277 3480 w
+(\347)2277 3380 w
+(\347)2277 3280 w
+(\347)2277 3180 w
+(\347)2277 3080 w
+10 R f
+( is)1 104(A more sophisticated method of ``\256xing'' the zeros based on the Good-Turing \(GT\) estimate)13 3856 2 720 4520 t
+( following table shows that this method performs)7 2117( The)1 227( Gale \(1990\).)2 573(discussed in Church and)3 1043 4 720 4740 t
+(signi\256cantly better than chance.)3 1270 1 720 4960 t
+10 B f
+(Table 10)1 370 1 2515 5400 t
+(A Careful Measure of Context Helps)5 1561 1 1920 5840 t
+10 R f
+(chance GT)1 701 1 2703 6060 t
+10 S f
+(_ _______________________________)1 1560 1 1920 6180 t
+10 R f
+( 45)1 434(wrong 164.5)1 1126 2 1920 6400 t
+( 4)1 434(uninformative 0)1 1126 2 1920 6620 t
+( 280)1 434(right 164.5)1 1126 2 1920 6840 t
+10 S f
+(\347)2561 6840 w
+(\347)2561 6760 w
+(\347)2561 6660 w
+(\347)2561 6560 w
+(\347)2561 6460 w
+(\347)2561 6360 w
+(\347)2561 6260 w
+(\347)2561 6160 w
+(\347)2561 6060 w
+10 R f
+( that we)2 332( Recall)1 313( this contextual evidence with the other knowledge sources?)8 2465(How do we combine)3 850 4 720 7500 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 15 15
+%%Page: 16 16
+DpostDict begin
+/saveobj save def
+mark
+16 pagesetup
+10 R f
+(- 16 -)2 216 1 2772 880 t
+(previously scored candidate corrections with)4 1853 1 720 1760 t
+10 I f
+(Pr)2615 1760 w
+10 R f
+(\()2723 1760 w
+10 I f
+(c)2764 1760 w
+10 R f
+(\))2816 1760 w
+10 I f
+(Pr)2898 1760 w
+10 R f
+(\()3006 1760 w
+10 I f
+(t)3047 1760 w
+10 S f
+(\357)3075 1777 w
+10 I f
+(c)3123 1760 w
+10 R f
+( now enhance this formula to)5 1242(\). We)1 263 2 3175 1760 t
+(include contextual factors:)2 1079 1 720 1980 t
+10 I f
+(Pr)1834 1980 w
+10 R f
+(\()1942 1980 w
+10 I f
+(c)1983 1980 w
+10 R f
+(\))2035 1980 w
+10 I f
+(Pr)2117 1980 w
+10 R f
+(\()2225 1980 w
+10 I f
+(context)2266 1980 w
+10 R f
+(,)2562 1980 w
+10 I f
+(t)2628 1980 w
+10 S f
+(\357)2656 1997 w
+10 I f
+(c)2704 1980 w
+10 R f
+( context is determined)3 918( we assume that the)4 822(\). If)1 184 3 2756 1980 t
+(by the adjacent words,)3 910 1 720 2200 t
+10 I f
+(l)1659 2200 w
+10 R f
+(and)1716 2200 w
+10 I f
+(r)1889 2200 w
+10 R f
+( factors are independent with each other and with the)9 2141(, and that these)3 611 2 1928 2200 t
+(typo, then we can use the formula:)6 1378 1 720 2420 t
+10 I f
+(Pr)2123 2420 w
+10 R f
+(\()2231 2420 w
+10 I f
+(c)2272 2420 w
+10 R f
+(\))2324 2420 w
+10 I f
+(Pr)2406 2420 w
+10 R f
+(\()2514 2420 w
+10 I f
+(t)2555 2420 w
+10 S f
+(\357)2583 2437 w
+10 I f
+(c)2631 2420 w
+10 R f
+(\))2683 2420 w
+10 I f
+(Pr)2765 2420 w
+10 R f
+(\()2873 2420 w
+10 I f
+(l)2914 2420 w
+10 S f
+(\357)2942 2437 w
+10 I f
+(c)2990 2420 w
+10 R f
+(\))3042 2420 w
+10 I f
+(Pr)3124 2420 w
+10 R f
+(\()3232 2420 w
+10 I f
+(r)3273 2420 w
+10 S f
+(\357)3312 2437 w
+10 I f
+(c)3360 2420 w
+10 R f
+(\).)3412 2420 w
+( three estimates of context are combined with the)8 2027(The following table shows the results when the)7 1933 2 720 2860 t
+(previous version of)2 805 1 720 3080 t
+10 I f
+(correct)1567 3080 w
+10 R f
+( that GT estimates of context provide a)7 1668( \256nd, as we expected,)4 927(. We)1 230 3 1855 3080 t
+( the context.)2 505(signi\256cant improvement over ignoring)3 1559 2 720 3300 t
+7 R f
+(9)2784 3260 w
+10 R f
+(Adding the GT estimate of context improves)6 1829 1 2851 3300 t
+( such as ELE, actually)4 958( contrast, poor estimates of context,)5 1513( In)1 151(performance from 87% to 90%.)4 1338 4 720 3520 t
+10 I f
+(degrade)720 3740 w
+10 R f
+( is better to ignore context than to use it badly.)10 1857( It)1 111(performance signi\256cantly.)1 1048 3 1072 3740 t
+10 B f
+(Table 11)1 370 1 2515 4180 t
+(Context is Misleading Unless Carefully Measured)5 2113 1 1643 4620 t
+10 R f
+( context)1 319( +GT)1 339( context)1 319( +ELE)1 389( context)1 319( +MLE)1 417(no context)1 419 7 1797 4840 t
+10 S f
+(_ ________________________________________________________________)1 3237 1 1081 4960 t
+10 R f
+( 34)1 658( 61)1 708( 11)1 736(wrong 43)1 1135 4 1081 5180 t
+( 0)1 658( 0)1 708( 136)1 736(uninformative 0)1 1135 4 1081 5400 t
+( 295)1 658( 268)1 708( 182)1 736(right 286)1 1135 4 1081 5620 t
+10 S f
+(\347)1722 5620 w
+(\347)1722 5540 w
+(\347)1722 5440 w
+(\347)1722 5340 w
+(\347)1722 5240 w
+(\347)1722 5140 w
+(\347)1722 5040 w
+(\347)1722 4940 w
+(\347)1722 4840 w
+8 S1 f
+(__________________)720 6349 w
+8 R f
+( The)1 165( 329 cases; 17 of the changes are right and 8 of them are wrong.)14 2048( GT method changes the program's preference in 25 of the)10 1863(9. The)1 244 4 720 6469 t
+( we conclude that the)4 728( Thus,)1 233( more right out of 25, assuming equal probability of two alternatives, is .04.)13 2576(probability of 17 or)3 663 4 840 6559 t
+(improvement is signi\256cant.)2 869 1 840 6649 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 16 16
+%%Page: 17 17
+DpostDict begin
+/saveobj save def
+mark
+17 pagesetup
+10 R f
+(- 17 -)2 216 1 2772 880 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 5.  , HEADING = Combining Multiple Knowledge Sources]
+9 B f
+( Multiple Knowledge Sources)3 1129(5. Combining)1 544 2 720 1760 t
+10 R f
+( the left)2 311(Four knowledge sources have been discussed: \(1\) the prior, \(2\) the channel probability, \(3\))13 3649 2 720 2310 t
+( we would hope that each of these knowledge sources is)10 2274( Ideally,)1 356( \(4\) the right context.)4 862(context and)1 468 4 720 2530 t
+( a scatter plot)3 544( is)1 94( There)1 284( 2 shows that this is so.)6 938( Figure)1 313(contributing new \(independent\) information.)3 1787 6 720 2750 t
+( plot shows the log)4 808( The)1 218(for each pair of the four factors.)6 1348 3 720 2970 t
+7 R f
+(10)3094 2930 w
+10 R f
+( by one of the)4 605(of the score assigned)3 873 2 3202 2970 t
+( that none of the scatter)5 974( Note)1 252( word \(as determined by our panel of judges\).)8 1885(factors to the correct)3 849 4 720 3190 t
+(plots shows a strong correlation.)4 1296 1 720 3410 t
+10 H f
+( fraction actually correct is plotted against)6 1937( The)1 244(Figure 1.)1 411 3 1368 3630 t
+( with)1 219( prior-only model is shown)4 1220( The)1 243(the predicted score.)2 910 4 1368 3850 t
+(long dashes, the channel-only model with short dashes,)7 2592 1 1368 4070 t
+(and)1368 4290 w
+10 I f
+(correct)1591 4290 w
+10 H f
+( straight line is ideal)4 985( The)1 255(with a solid line.)3 786 3 1934 4290 t
+( standard)1 448(performance, and the curved lines show one)6 2144 2 1368 4510 t
+(deviation limits.)1 730 1 1368 4730 t
+10 I f
+(Correct)2193 4730 w
+10 H f
+(is outside the one standard)4 1383 1 2577 4730 t
+( by)1 150(deviation limits about as much as could be expected)8 2442 2 1368 4950 t
+(chance, while the two partial models are less accurate.)8 2432 1 1368 5170 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 6.  , HEADING = Contextual Constraints]
+9 B f
+( Constraints)1 473(6. Contextual)1 539 2 720 5830 t
+10 R f
+( without more)2 567(We pointed out before that the human judges were extremely reluctant to cast a vote)14 3393 2 720 6380 t
+8 S1 f
+(__________________)720 6560 w
+8 R f
+(10. A log transform is use here because the factors are combined by a multiplicative rule.)15 2835 1 720 6680 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 17 17
+%%Page: 18 18
+DpostDict begin
+/saveobj save def
+mark
+18 pagesetup
+10 R f
+(- 18 -)2 216 1 2772 880 t
+( concordance line or)3 814(information, and that they were much more comfortable when they could see a)12 3146 2 720 1760 t
+( it is)2 233( However,)1 470( improve performance.)2 971( suggests that contextual clues might help)6 1852(two. This)1 434 5 720 1980 t
+( we have found that poor measures of context are worse)10 2237(important to estimate the context carefully;)5 1723 2 720 2200 t
+(than none.)1 416 1 720 2420 t
+( 100)1 179(In this work, we use a simple n-gram model of context, The calculation is)13 2982 2 720 2878 t
+9 S f
+(\326` ````````)1 442 1 3889 2878 t
+10 I f
+(n)3947 2878 w
+10 R f
+(\()4005 2878 w
+10 I f
+(d)4046 2878 w
+10 S f
+(-)4120 2878 w
+10 I f
+(n)4191 2878 w
+10 R f
+(\))4249 2878 w
+10 I f
+(/ d)1 86 1 4290 2878 t
+7 R f
+(3)4387 2838 w
+10 R f
+(. The)1 234 1 4446 2878 t
+(calculation is 100)2 725 1 720 3116 t
+9 S f
+(\326` ````````)1 442 1 1453 3116 t
+10 I f
+(n)1511 3116 w
+10 R f
+(\()1569 3116 w
+10 I f
+(d)1610 3116 w
+10 S f
+(-)1684 3116 w
+10 I f
+(n)1755 3116 w
+10 R f
+(\))1813 3116 w
+10 I f
+(/ d)1 86 1 1854 3116 t
+7 R f
+(3)1951 3076 w
+10 R f
+( methods used)2 590( \(compared with much more sophisticated)5 1728(. simple)1 352 3 2010 3116 t
+( illustrate the problem)3 904(in AI and natural language processing\), even these simple n-gram methods)10 3056 2 720 3336 t
+( same estimation issue is)4 1013( The)1 211( contextual probabilities are worse than none.)6 1852(that poor estimates of)3 884 4 720 3556 t
+(probably even more critical when more sophisticated AI models of context are used.)12 3368 1 720 3776 t
+7 R f
+(7)4088 3736 w
+10 R f
+( is)1 161(The following table shows two inferior methods of estimating The calculation)10 3799 2 720 4216 t
+(100)720 4454 w
+9 S f
+(\326` ````````)1 442 1 878 4454 t
+10 I f
+(n)936 4454 w
+10 R f
+(\()994 4454 w
+10 I f
+(d)1035 4454 w
+10 S f
+(-)1109 4454 w
+10 I f
+(n)1180 4454 w
+10 R f
+(\))1238 4454 w
+10 I f
+(/ d)1 86 1 1279 4454 t
+7 R f
+(3)1376 4414 w
+10 R f
+( calculation is 100)3 730(. The)1 230 2 1435 4454 t
+9 S f
+(\326` ````````)1 442 1 2403 4454 t
+10 I f
+(n)2461 4454 w
+10 R f
+(\()2519 4454 w
+10 I f
+(d)2560 4454 w
+10 S f
+(-)2634 4454 w
+10 I f
+(n)2705 4454 w
+10 R f
+(\))2763 4454 w
+10 I f
+(/ d)1 86 1 2804 4454 t
+7 R f
+(3)2901 4414 w
+10 R f
+( these zeros can)3 631( attempts to ``\256x'')3 730(. Simple)1 359 3 2960 4454 t
+( that has not)3 495(be disasterous; the ELE, for example, badly overestimates the probability of a bigram)12 3465 2 720 4674 t
+(been seen in the training set, and consequently, it is wrong more often than it is right.)16 3405 1 720 4894 t
+10 B f
+(Table 9)1 320 1 2540 5334 t
+8 S1 f
+(__________________)720 6259 w
+8 R f
+( as \(Mays, Damerau and Mercer, 1990\) might not work much better than the)13 2471( MLE statistics suggest that a trigram model such)8 1605(10. The)1 244 3 720 6379 t
+( 15 cases where the bigram context is)7 1295( trigram model might help for the)6 1148( The)1 178(simple bigram model that we have been using.)7 1579 4 840 6469 t
+( set of 136 cases where the bigram context is uninformative, since the)12 2286(misleading, but it probably won't help for the much larger)9 1914 2 840 6559 t
+(trigrams will also be uninformative in these cases.)7 1593 1 840 6649 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 18 18
+%%Page: 19 19
+DpostDict begin
+/saveobj save def
+mark
+19 pagesetup
+10 R f
+(- 19 -)2 216 1 2772 880 t
+10 B f
+( left right)2 719(channel prior)1 706 2 2229 1760 t
+(channel)1745 1980 w
+10 R f
+( 0.07)1 343( -0.00)1 365(1.00 -0.05)1 603 3 2325 1980 t
+10 B f
+(prior)1745 2200 w
+10 R f
+( 0.22)1 343( 0.15)1 365(-0.05 1.00)1 636 3 2292 2200 t
+10 B f
+(left)1745 2420 w
+10 R f
+( 0.11)1 343( 1.00)1 365(-0.00 0.15)1 636 3 2292 2420 t
+10 B f
+(right)1745 2640 w
+10 R f
+( 1.00)1 343( 0.11)1 365(0.07 0.22)1 603 3 2325 2640 t
+( The)1 233( shows a scatter plot comparing two of our knowledge sources.)10 2795( panel)1 268( Each)1 276(Figure 2.)1 388 5 720 2860 t
+( The)1 216( correct word are plotted.)4 1049(logarithms of the scores assigned by the individual factors to the)10 2695 3 720 3080 t
+(plots show that any two of these factors are nearly independent.)10 2542 1 720 3300 t
+( the correlations are quite small, although)6 1716( that most of)3 530( Note)1 253(The following table shows the pair-wise correlations.)6 2181 4 720 3520 t
+( As)1 183( a modest correlation between the prior probability and the left and right contextual probabilities.)14 4183(there is)1 314 3 720 3740 t
+( of correlation is encouraging, because it suggests that each knowledge source is)12 3531(mentioned above, this lack)3 1149 2 720 3960 t
+(contributing new information, which will \(hopefully\) improve performance.)7 3037 1 720 4180 t
+10 B f
+(Table 12)1 370 1 2875 4620 t
+10 R f
+(Correlations of Logarithms of Scores from Individual Knowledge Sources)8 2968 1 1576 4840 t
+10 B f
+( score)1 246( mean)1 383( performance)1 1140( model)1 852(# of KBS)2 384 5 1557 5280 t
+10 R f
+( 75)1 663( 80)1 1308(1 channel)1 844 3 1557 5500 t
+( 73)1 663( 76)1 1424(1 prior)1 728 3 1557 5720 t
+( 77)1 663( 78)1 1485(1 left)1 667 3 1557 5940 t
+( 74)1 663( 77)1 1429(1 right)1 723 3 1557 6160 t
+10 S f
+(_ ____________________________________________________________)1 3005 1 1557 6280 t
+10 R f
+( 84)1 663( 87)1 1008( + prior)2 300(2 channel)1 844 4 1557 6500 t
+( 85)1 663( 87)1 1069( + left)2 239(2 channel)1 844 4 1557 6720 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 19 19
+%%Page: 20 20
+DpostDict begin
+/saveobj save def
+mark
+20 pagesetup
+10 R f
+(- 20 -)2 216 1 2772 880 t
+( 85)1 663( 88)1 1013( + right)2 295(2 channel)1 844 4 1557 1760 t
+( 82)1 663( 83)1 1185( + left)2 239(2 prior)1 728 4 1557 1980 t
+( 79)1 663( 80)1 1129( + right)2 295(2 prior)1 728 4 1557 2200 t
+( 84)1 663( 86)1 1190( + right)2 295(2 left)1 667 4 1557 2420 t
+10 S f
+(_ ____________________________________________________________)1 3005 1 1557 2540 t
+10 R f
+( 88)1 663( 90)1 769( + prior + left)4 539(3 channel)1 844 4 1557 2760 t
+( 87)1 663( 88)1 713( + prior + right)4 595(3 channel)1 844 4 1557 2980 t
+( 89)1 663( 90)1 774( + left + right)4 534(3 channel)1 844 4 1557 3200 t
+( 85)1 663( 86)1 890( + left + right)4 534(3 prior)1 728 4 1557 3420 t
+10 S f
+(_ ____________________________________________________________)1 3005 1 1557 3540 t
+10 R f
+( 89)1 663( 90)1 474( + prior + left + right)6 834(4 channel)1 844 4 1557 3760 t
+( is,)1 121( That)1 237(The following table shows that performance is generally improved with each additional knowledge source.)13 4322 3 720 4420 t
+( by itself perform better than chance, pairs of knowledge sources perform better still,)13 3436(each of the knowledge sources)4 1244 2 720 4640 t
+( results below show that most of this pattern holds, except)10 2348( The)1 208( better yet, and all four perform best of all.)9 1726(triples are)1 398 4 720 4860 t
+( better than all 3-way combinations because our)7 2036(that we cannot say that the 4-way combination is signi\256cantly)9 2644 2 720 5080 t
+( conclude that it is worth seeking additional factors.)8 2067( We)1 188(experiment is too small.)3 961 3 720 5300 t
+( that scores are highly correlated with)6 1538( Note)1 250( mean of the scores for the correct words.)8 1701(The fourth column shows the)4 1191 4 720 5740 t
+(empirically observed performance, as we would hope.)6 2161 1 720 5960 t
+10 B f
+(Table 13)1 370 1 2875 6400 t
+10 R f
+(Performance Increases with Number of Knowledge Sources)6 2393 1 1863 6620 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 20 20
+%%Page: 21 21
+DpostDict begin
+/saveobj save def
+mark
+21 pagesetup
+10 R f
+(- 21 -)2 216 1 2772 880 t
+12 B f
+(del[X, Y] = Deletion of Y after X)7 1659 1 2586 1760 t
+10 B f
+( \(Deleted Letter\))2 702(X Y)1 2502 2 720 1980 t
+10 R f
+( z)1 200( x y)2 400( w)1 200( u v)2 400( t)1 200( s)1 200( r)1 200( n o p q)4 800( m)1 200( l)1 200( k)1 200( i j)2 400( g h)2 400( f)1 200( e)1 200( d)1 200( c)1 200(a b)1 244 18 1068 2200 t
+10 S f
+(_ ___________________________________________________________________________________________________________)1 5392 1 720 2320 t
+10 R f
+( 1 0 0 2 0)5 1000( 98 28 53 62)4 800( 0 9 0)3 600( 53)1 200( 5)1 200( 43)1 200( 0 4)2 400( 61)1 200( 8)1 200( 18)1 200( 3 5)2 400( 58 21)2 400( 7)1 200(a 0)1 368 14 744 2540 t
+( 0 6 1 0 0 0 0)7 1400( 17)1 200( 0 0 2 0 0 6)6 1200( 26)1 200( 0 0)2 400( 183)1 200( 0 0 0)3 600( 22)1 200( 2 1 0)3 600(b 2)1 371 10 741 2760 t
+( 0 0 0 1 0)5 1000( 54 17)2 400( 6)1 200( 46)1 200( 0 0)2 400( 33)1 200( 0 0)2 400( 17)1 200( 0 9)2 400( 320)1 200( 24)1 200( 0 0)2 400( 63)1 200( 0)1 200( 70)1 200( 0)1 200(c 37)1 368 17 744 2980 t
+( 1 0 3 2 0 0 6 0)8 1600( 11)1 200( 1 1 8 4 3 3 0 0)8 1600( 62)1 200( 0)1 200( 10)1 200( 0)1 200( 25 45)2 400( 0 7)2 400(d 12)1 371 10 741 3200 t
+( 8 2 1 7 1 0)6 1200( 34)1 200( 237 223)2 400( 9 1)2 400( 76 19)2 400( 9)1 200( 32)1 200( 3 1 1 6 0 0)6 1200( 50 74 89)3 600( 1)1 200(e 80)1 368 11 744 3420 t
+( 0 8 1 0 0 0 1 0)8 1600( 11)1 200( 0 0 4 0 0)5 1000( 12)1 200( 0 0)2 400( 79)1 200( 0 0)2 400( 13 46)2 400( 0 0 0)3 600(f 4)1 363 10 749 3640 t
+( 0 0 0 1 0)5 1000( 22)1 200( 7 1)2 400( 52)1 200( 4 0 0)3 600( 29)1 200( 0 0 3 0)4 800( 37 25 39)3 600( 1)1 200( 83)1 200( 0 0 2)3 600(g 25)1 371 12 741 3860 t
+( 0 0 1 0 1 0)6 1200( 26)1 200( 1)1 200( 15)1 200( 0 0)2 400( 22)1 200( 0 0 7 1 9)5 1000( 25 24)2 400( 0 0)2 400( 20)1 200( 1 3)2 400( 12)1 200(h 15)1 371 13 741 4080 t
+( 1 1 0 0 1 7)6 1200( 16 71 64)3 600( 7 0)2 400( 38 14 82 41)4 800( 1 9 0 1 0 0)6 1200( 60 26 23)3 600( 1)1 200(i 26)1 360 8 752 4300 t
+( 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0)25 5000(j 0)1 360 2 752 4520 t
+( 0 0 0 1 5 0 0 0 1 0 0 0)12 2400( 17)1 200( 1 8 1 5 0 1 3 0)8 1600( 15)1 200( 0 0 1)3 600(k 4)1 371 6 741 4740 t
+( 0)1 200( 11)1 200( 7 3 2 0 0)5 1000( 12)1 200( 0 0 2)3 600( 29)1 200( 2 0)2 400( 211)1 200( 0 0)2 400( 217)1 200( 0 0 0)3 600( 48)1 200( 0 1 6)3 600(l 24)1 360 14 752 4960 t
+( 0 0 9 0 4 0 0 0 0 0)10 2000( 31)1 200( 7 7)2 400( 180)1 200( 0 0 0)3 600( 42)1 200( 0 0 1)3 600( 33)1 200( 0 0)2 400( 10)1 200(m 15)1 385 11 727 5180 t
+( 1 1 0 2 0)5 1000( 87 43)2 400( 127)1 200( 0 0 0)3 600( 21)1 200( 144)1 200( 17)1 200( 0 0 0)3 600( 191)1 200( 0)1 200( 160)1 200( 1)1 200( 42 71 68)3 600( 0)1 200(n 21)1 371 15 741 5400 t
+( 2 5 0 1 0)5 1000( 98 20 13 47)4 800( 0)1 200( 70 26 20)3 600( 9)1 200( 13)1 200( 4 3 6 8 0 5 0 4 1 0)10 2000(o 11)1 371 8 741 5620 t
+( 2 0 0 0 0 0)6 1200( 18)1 200( 1)1 200( 58)1 200( 0)1 200( 30 93)2 400( 1 0)2 400( 28)1 200( 0 0)2 400( 12 15)2 400( 0 0)2 400( 22)1 200( 0 0 0)3 600(p 25)1 371 14 741 5840 t
+( 0 0 0 0 0)5 1000( 18)1 200( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)19 3800(q 0)1 371 4 741 6060 t
+( 0)1 200( 27)1 200( 1 0)2 400( 10)1 200( 0)1 200( 68)1 200( 277 103)2 400( 2 0)2 400( 21)1 200( 157)1 200( 7)1 200( 33)1 200( 0 3)2 400( 132)1 200( 5)1 200( 11)1 200( 0)1 200( 188)1 200( 12 19)2 400( 4)1 200(r 63)1 363 21 749 6280 t
+( 0 0 0 1 0)5 1000( 21)1 200( 265 124)2 400( 0 4)2 400( 30 30)2 400( 0 0 2 1 0)5 1000( 231)1 200( 18)1 200( 1 0)2 400( 74)1 200( 0)1 200( 27)1 200( 0)1 200(s 16)1 366 14 746 6500 t
+( 0 4 0 2 0)5 1000( 14)1 200( 137)1 200( 5)1 200( 203)1 200( 1 0)2 400( 11)1 200( 3 3)2 400( 31)1 200( 0 0)2 400( 427)1 200( 49)1 200( 1 7)2 400( 76)1 200( 1 2 0)3 600(t 24)1 360 16 752 6720 t
+10 S f
+(\347)887 6904 w
+(\347)887 6860 w
+(\347)887 6760 w
+(\347)887 6660 w
+(\347)887 6560 w
+(\347)887 6460 w
+(\347)887 6360 w
+(\347)887 6260 w
+(\347)887 6160 w
+(\347)887 6060 w
+(\347)887 5960 w
+(\347)887 5860 w
+(\347)887 5760 w
+(\347)887 5660 w
+(\347)887 5560 w
+(\347)887 5460 w
+(\347)887 5360 w
+(\347)887 5260 w
+(\347)887 5160 w
+(\347)887 5060 w
+(\347)887 4960 w
+(\347)887 4860 w
+(\347)887 4760 w
+(\347)887 4660 w
+(\347)887 4560 w
+(\347)887 4460 w
+(\347)887 4360 w
+(\347)887 4260 w
+(\347)887 4160 w
+(\347)887 4060 w
+(\347)887 3960 w
+(\347)887 3860 w
+(\347)887 3760 w
+(\347)887 3660 w
+(\347)887 3560 w
+(\347)887 3460 w
+(\347)887 3360 w
+(\347)887 3260 w
+(\347)887 3160 w
+(\347)887 3060 w
+(\347)887 2960 w
+(\347)887 2860 w
+(\347)887 2760 w
+(\347)887 2660 w
+(\347)887 2560 w
+(\347)887 2460 w
+(\347)887 2360 w
+(\347)887 2260 w
+(\347)887 2160 w
+(\347)887 2060 w
+(\347)887 1960 w
+(\347)887 1860 w
+(\347)887 1760 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 21 21
+%%Page: 22 22
+DpostDict begin
+/saveobj save def
+mark
+22 pagesetup
+10 R f
+(- 22 -)2 216 1 2772 880 t
+( 0 0 0 0 1 0)6 1200( 31 66)2 400( 129)1 200( 1 0 0)3 600( 111)1 200( 2)1 200( 39)1 200( 0 0)2 400( 28)1 200( 0 1 0)3 600( 10 15)2 400( 6 9)2 400(u 26)1 371 13 741 1760 t
+( 0 0 0 0 0 2 0 0 1 0 0 0 0 0 0 1 0)17 3400( 31)1 200( 0 0 0)3 600( 58)1 200( 0 0 0)3 600(v 9)1 371 6 741 1980 t
+( 0 0 0 0 0 0 0)7 1400( 24)1 200( 0 0 1 0 2 2 0 0 2)9 1800( 11 15)2 400( 1 0)2 400( 11)1 200( 0 0 1)3 600(w 40)1 382 8 730 2200 t
+( 0 3 0 0 1 0 0 0 0 0 0 0 6 0 0 0 5 0 0 0 0 1 0)23 4600( 17)1 200( 0)1 200(x 1)1 371 4 741 2420 t
+( 1 0 0 1 0 0 0)7 1400( 17)1 200( 0 2 0 1 0 1 0 0 1 2 1 1 1 0 0)15 3000( 34)1 200( 1)1 200(y 2)1 371 6 741 2640 t
+( 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2)25 5000(z 1)1 368 2 744 2860 t
+(@)720 3080 w
+10 S f
+(\347)887 3080 w
+(\347)887 3060 w
+(\347)887 2960 w
+(\347)887 2860 w
+(\347)887 2760 w
+(\347)887 2660 w
+(\347)887 2560 w
+(\347)887 2460 w
+(\347)887 2360 w
+(\347)887 2260 w
+(\347)887 2160 w
+(\347)887 2060 w
+(\347)887 1960 w
+(\347)887 1860 w
+(\347)887 1760 w
+10 R f
+( 0 0 2)3 600( 24)1 200( 6 2 1)3 600( 28 26)2 400( 0)1 200( 17)1 200( 5 5)2 400( 22 16)2 400( 3 6)2 400( 20)1 200( 7 6)2 400(20 14 41 31 20 20)5 1100 12 1012 3080 t
+12 B f
+(add[X, Y] = Insertion of Y after X)7 1740 1 2546 3740 t
+10 B f
+( \(Inserted Letter\))2 736(X Y)1 2485 2 720 3960 t
+10 R f
+( z)1 200( x y)2 400( w)1 200( u v)2 400( t)1 200( s)1 200( r)1 200( n o p q)4 800( m)1 200( l)1 200( k)1 200( i j)2 400( g h)2 400( f)1 200( e)1 200( d)1 200( c)1 200(a b)1 244 18 1068 4180 t
+10 S f
+(_ ___________________________________________________________________________________________________________)1 5392 1 720 4300 t
+10 R f
+( 0 1 1 4 1)5 1000( 28)1 200( 7)1 200( 134)1 200( 28)1 200( 4 3)2 400( 39 12)2 400( 2)1 200( 31)1 200( 1 4)2 400( 33)1 200( 0 1 1)3 600( 10)1 200( 7)1 200( 14)1 200( 1)1 200(a 15)1 368 17 744 4520 t
+( 0 0 3 0 0 0 0)7 1400( 16)1 200( 0 1 1 0 0 5)6 1200( 15)1 200( 0 0)2 400( 50)1 200( 0 0 7 0 1 0)6 1200( 11)1 200(b 3)1 371 9 741 4740 t
+( 7 8 4 0 1 0 0)7 1400( 25)1 200( 0 3 1 1 1 7 1 0 7)9 1800( 18 50)2 400( 0 0)2 400( 13)1 200( 1)1 200( 54)1 200( 0)1 200(c 19)1 368 10 744 4960 t
+( 0 0 0 0 0 5 0)7 1400( 119)1 200( 0 0 6)3 600( 13)1 200( 2 0 0 9 0 0 6 1 9)9 1800( 17 14)2 400( 0 3)2 400(d 18)1 371 8 741 5180 t
+( 2 8 0)3 600( 10)1 200( 6 4 1)3 600( 417)1 200( 83)1 200( 5 1 0)3 600( 27)1 200( 2 0 1 4 0 3 4 6)8 1600( 147)1 200( 76)1 200( 2 8)2 400(e 39)1 368 12 744 5400 t
+( 0 1 0 0 0 1 0)7 1400( 23)1 200( 0 0 0 0 0 5)6 1200( 10)1 200( 0 0)2 400( 12)1 200( 1 0)2 400( 27)1 200( 0 0 0 2)4 800(f 1)1 363 10 749 5620 t
+( 2 3 0 1 0 0 0)7 1400( 69)1 200( 8 0 0 2 0 1 1 0 1 5)10 2000( 12)1 200( 0 0 0 5 1 5)6 1200(g 8)1 371 6 741 5840 t
+( 1 0 5 0 3 0)6 1200( 16 24 22)3 600( 2 0 1 0 1 4 0 0)8 1600( 10 18 17)3 600( 0)1 200( 24)1 200( 1 0 1)3 600(h 4)1 371 8 741 6060 t
+( 0 0 1 0 1)5 1000( 30 29 11)3 600( 1 0 9)3 600( 17 11 33 27)4 800( 2 1)2 400( 69)1 200( 0 1 1)3 600( 13 13 25)3 600( 3)1 200(i 10)1 360 10 752 6280 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0)25 5000(j 0)1 360 2 752 6500 t
+( 0 1 0 0 0 4 0)7 1400( 95)1 200( 4 0 1 9 0 0 1 1 0 1 1 0 0 2 1 0 0)17 3400(k 2)1 371 4 741 6720 t
+10 S f
+(\347)887 6904 w
+(\347)887 6860 w
+(\347)887 6760 w
+(\347)887 6660 w
+(\347)887 6560 w
+(\347)887 6460 w
+(\347)887 6360 w
+(\347)887 6260 w
+(\347)887 6160 w
+(\347)887 6060 w
+(\347)887 5960 w
+(\347)887 5860 w
+(\347)887 5760 w
+(\347)887 5660 w
+(\347)887 5560 w
+(\347)887 5460 w
+(\347)887 5360 w
+(\347)887 5260 w
+(\347)887 5160 w
+(\347)887 5060 w
+(\347)887 4960 w
+(\347)887 4860 w
+(\347)887 4760 w
+(\347)887 4660 w
+(\347)887 4560 w
+(\347)887 4460 w
+(\347)887 4360 w
+(\347)887 4260 w
+(\347)887 4160 w
+(\347)887 4060 w
+(\347)887 3960 w
+(\347)887 3860 w
+(\347)887 3760 w
+(\347)887 3660 w
+(\347)887 3560 w
+(\347)887 3460 w
+(\347)887 3360 w
+(\347)887 3260 w
+(\347)887 3160 w
+(\347)887 3060 w
+(\347)887 2960 w
+(\347)887 2860 w
+(\347)887 2760 w
+(\347)887 2660 w
+(\347)887 2560 w
+(\347)887 2460 w
+(\347)887 2360 w
+(\347)887 2260 w
+(\347)887 2160 w
+(\347)887 2060 w
+(\347)887 1960 w
+(\347)887 1860 w
+(\347)887 1760 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 22 22
+%%Page: 23 23
+DpostDict begin
+/saveobj save def
+mark
+23 pagesetup
+10 R f
+(- 23 -)2 216 1 2772 880 t
+( 7 3 1 0 0 2 0)7 1400( 97)1 200( 1 0 7 0 0 0)6 1200( 128)1 200( 0 2)2 400( 79)1 200( 0 0 0)3 600( 38)1 200( 1 0 1)3 600(l 3)1 360 10 752 1760 t
+( 1 2 0 1 0 0 0)7 1400( 47)1 200( 7 2 0 0)4 800( 44)1 200( 102)1 200( 0 0 1 6 0 1 0)7 1400( 17)1 200( 1 1 0)3 600(m 11)1 385 9 727 1980 t
+( 1 1 0 0 1 0)6 1200( 53)1 200( 156)1 200( 0 0 2)3 600( 26 99 12)3 600( 0 1 1)3 600( 34)1 200( 0)1 200( 17)1 200( 4)1 200( 13 52)2 400( 5 7)2 400(n 15)1 371 13 741 2200 t
+( 1 0 0 1 1)5 1000( 19)1 200( 4)1 200( 16 59)2 400( 0)1 200( 13 64 30)3 600( 1 0 6 3)4 800( 28)1 200( 1 1 3 7 2 1 0)7 1400(o 14)1 371 10 741 2420 t
+( 9 1 1 1 0 0 0)7 1400( 29 52)2 400( 0)1 200( 26 70)2 400( 3 0 0 2 0 0)6 1200( 20)1 200( 0 0)2 400( 10)1 200( 0 1 1)3 600(p 23)1 371 10 741 2640 t
+( 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0)25 5000(q 0)1 371 2 741 2860 t
+( 0)1 200( 10)1 200( 7 0 1 0)4 800( 29)1 200( 132 273)2 400( 0 0)2 400( 10)1 200( 0 0 5 9 7)5 1000( 64)1 200( 1 1 2)3 600( 89)1 200( 2 1 0)3 600(r 15)1 363 13 749 3080 t
+( 7 0 1 0 7 0)6 1200( 49)1 200( 205)1 200( 7 3 1 0 1)5 1000( 10)1 200( 0 2 2)3 600( 101)1 200( 50)1 200( 0 1)2 400( 20 41)2 400( 1 7)2 400(s 13)1 366 12 746 3300 t
+( 0 5 0 6 0)5 1000( 11)1 200( 264 183)2 400( 54)1 200( 1 0)2 400( 23)1 200( 1 0 6 3 1)5 1000( 10 24 59)3 600( 1)1 200( 65)1 200( 0 0 3)3 600(t 39)1 360 12 752 3520 t
+( 0 0 2 3 0)5 1000( 49 19 27 26)4 800( 1 1 3 3 9 1 3 0)8 1600( 24)1 200( 0 3 0 9 0 0 1)7 1400(u 15)1 371 6 741 3740 t
+( 0 0 1 0 1 0 1 0 0 0 0 1 5 1 0 0 0)17 3400( 10)1 200( 0 0 0)3 600( 36)1 200( 2 0 0)3 600(v 0)1 371 6 741 3960 t
+( 0 0 1 1 0 1 1 0 2 0 0 1 1 8 0 2 0 4 0 0 0)21 4200( 10)1 200( 0 0 1)3 600(w 0)1 382 4 730 4180 t
+( 0 1 0 0 6 1 0 0 0 1 0 3 0 0 0 2 0 0 0 0 1 0 0)23 4600( 18)1 200( 0)1 200(x 0)1 371 4 741 4400 t
+( 0 1 0 2 0)5 1000( 13)1 200( 1)1 200( 33)1 200( 1 2 0 3 0 0 0 2 0 0 1 1 6 0 0 0 1)17 3400(y 5)1 371 6 741 4620 t
+( 0 0 0 5 1 0 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 4)25 5000(z 2)1 368 2 744 4840 t
+( 1 2 1 1 2)5 1000( 11)1 200( 2)1 200( 23)1 200( 0 6)2 400( 10)1 200( 5 6 2 2)4 800( 17)1 200( 3 5 1)3 600( 26 11 14)3 600( 8 9 8)3 600(@ 46)1 392 12 720 5060 t
+10 S f
+(\347)887 5060 w
+(\347)887 4960 w
+(\347)887 4860 w
+(\347)887 4760 w
+(\347)887 4660 w
+(\347)887 4560 w
+(\347)887 4460 w
+(\347)887 4360 w
+(\347)887 4260 w
+(\347)887 4160 w
+(\347)887 4060 w
+(\347)887 3960 w
+(\347)887 3860 w
+(\347)887 3760 w
+(\347)887 3660 w
+(\347)887 3560 w
+(\347)887 3460 w
+(\347)887 3360 w
+(\347)887 3260 w
+(\347)887 3160 w
+(\347)887 3060 w
+(\347)887 2960 w
+(\347)887 2860 w
+(\347)887 2760 w
+(\347)887 2660 w
+(\347)887 2560 w
+(\347)887 2460 w
+(\347)887 2360 w
+(\347)887 2260 w
+(\347)887 2160 w
+(\347)887 2060 w
+(\347)887 1960 w
+(\347)887 1860 w
+(\347)887 1760 w
+10 R f
+( might \256rst parse the input \(Hindle, 1983; Seneff, 1989\) and then look at)13 3025( One)1 225(Many other factors can be de\256ned.)5 1430 3 720 5720 t
+( example, there are interesting constraints between verbs and objects)9 2765( For)1 193(words in particular systactic constructions.)4 1722 3 720 5940 t
+( course, we should also consider extending)6 1741( Of)1 160( modeled very well by simple n-gram methods.)7 1922(which are not always)3 857 4 720 6160 t
+(the context to trigrams, which has been useful in speech recognition \(Jelinek, 1985\), and could be useful here.)17 4610 1 720 6380 t
+7 R f
+(11)5330 6340 w
+8 S1 f
+(__________________)720 6560 w
+8 R f
+( to know how much)4 647( would be interesting)3 682( It)1 92( Damerau and Mercer \(1990\) have used a trigram model for spelling correction.)12 2582(11. Mays,)1 317 5 720 6680 t
+(the extra context improves performance.)4 1285 1 840 6770 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 23 23
+%%Page: 24 24
+DpostDict begin
+/saveobj save def
+mark
+24 pagesetup
+10 R f
+(- 24 -)2 216 1 2772 880 t
+( of the cases.)3 521(However, since zero is the most common bigram frequency already, trigrams will not help in about half)16 4159 2 720 1760 t
+( distances)1 391( Thesaurus)1 460( 1990\) of the adjacent words should also be investigated.)9 2269(Parts of speech \(Church, 1989; Elbeze,)5 1560 4 720 1980 t
+( \(Salton, 1989, 9.6\), and could provide additional)7 2234(have proved useful in information retrieval applications)6 2446 2 720 2200 t
+( decomposition might also be worth investigating.)6 2003( Morphological)1 644(information here.)1 693 3 720 2420 t
+( of our)2 282( Each)1 257( factors are added, we believe the methods for combination need to be studied more closely.)15 3793(As more)1 348 4 720 2860 t
+( to shrink each likelihood ratio towards 1 before)8 2079(individual factors is overcon\256dent, so it would be reasonable)8 2601 2 720 3080 t
+( would also be reasonable)4 1035( It)1 112( least overcon\256dent sources of evidence would then get greater weight.)10 2835(multiplying. The)1 698 4 720 3300 t
+(to shrink individually poorly measured factors.)5 1876 1 720 3520 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 7.  , HEADING = Conclusions]
+9 B f
+(7. Conclusions)1 579 1 720 4180 t
+10 R f
+( spelling correction programs in the past such as Kucera \(1988\) that generated a list of)15 3500(There have been a number of)5 1180 2 720 4510 t
+( Our)1 211( we have been doing here.)5 1071(candidates by looking for insertions, deletions, substitutions and reversals, much as)10 3398 3 720 4730 t
+( the author of the Unix)5 997( McIlroy,)1 420(contribution is the emphasis on scoring.)5 1684 3 720 4950 t
+10 S f
+(\342)3821 4950 w
+10 I f
+(spell)3944 4950 w
+10 R f
+(program \(1982\), intentionally)2 1223 1 4177 4950 t
+( detection problem, and argued \(private communication\) that spelling correction was a bad)12 3726(focused on the spelling)3 954 2 720 5170 t
+( felt that it was)4 598( He)1 167(idea so long as the corrector couldn't separate the plausible candidates from the implausible ones.)14 3915 3 720 5390 t
+( this)1 178( In)1 141( the user under a long list of mostly implausible candidates.)10 2459(probably more distracting than helpful to bury)6 1902 4 720 5610 t
+( possible to sort the candidates by a likelihood function that agrees well)12 2942(work, we have attempted to show that it is)8 1738 2 720 5830 t
+(enough with human judges to be helpful.)6 1635 1 720 6050 t
+( of the more)3 488( have looks at just a few)6 965( We)1 188(We have furthermore studied the problem of adding contextual information.)9 3039 4 720 6380 t
+( only the two adjacent words to the typo, and have tried to estimate)13 2927( have considered)2 710( We)1 208(obvious approaches.)1 835 4 720 6600 t
+( the simplest estimators that one)5 1291( Using)1 290( on these adjacent words.)4 1010(probabilities of the proposed corrections conditional)5 2089 4 720 6820 t
+( expected likelihood estimates, actually degrade performance.)6 2682(might think of, the maximum likelihood and)6 1998 2 720 7040 t
+( the context is estimated very carefully with Good-Turing methods, then context does improve)13 4085(Fortunately, if)1 595 2 720 7260 t
+(performance, as one would hope it should.)6 1697 1 720 7480 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 24 24
+%%Page: 25 25
+DpostDict begin
+/saveobj save def
+mark
+25 pagesetup
+10 R f
+(- 25 -)2 216 1 2772 880 t
+( the information available to the)5 1289(We noticed that the human judges were extremely reluctant to cast a vote given only)14 3391 2 720 1760 t
+( Furthermore,)1 578( two.)1 204(program, and that they were much more comfortable when they could see a concordance line or)15 3898 3 720 1980 t
+( the judges are using additional contextual factors.)7 2064( Apparently)1 507( exceeded the program's performance.)4 1562(the judges all)2 547 4 720 2200 t
+( as parse trees, word trigrams, part of speech n-grams,)9 2236(It might be worth looking at a number of possibilities such)10 2444 2 720 2420 t
+( of these possibilities have proved useful in other)8 2239( Many)1 318( structures.)1 473(thesaurus relations, and morphological)3 1650 4 720 2640 t
+( easy to make the)4 709(applications, and may also improve performance in this application, as well, though it may not be)15 3971 2 720 2860 t
+( both arti\256cial intelligence and statistics should take it as a challenge)11 2750( in)1 103( Researchers)1 531(case given the estimation issues.)4 1296 4 720 3080 t
+(to show how their methodologies can be used to help raise performance up to the level of human performance.)18 4416 1 720 3300 t
+10 I f
+(Acknowledgements)2677 3740 w
+10 R f
+(Mark Kernighan worked on preliminary stages of this research.)8 2530 1 720 3960 t
+10 B f
+(References)2828 4400 w
+10 R f
+(Box G. E. P. and G. C. Tiao \(1973\))8 1485 1 720 4840 t
+10 I f
+(Bayesian Inference in Statistical Analysis)4 1696 1 2239 4840 t
+10 R f
+(, Reading, Massachusetts: Addison-)3 1465 1 3935 4840 t
+(Wesley)720 5060 w
+(Chapman R. \(1977\))2 791 1 720 5500 t
+10 I f
+(Roget's International Thesaurus)2 1300 1 1536 5500 t
+10 R f
+(, fourth edition, New York: Harper & Row)7 1711 1 2836 5500 t
+( Unrestricted Text,'')2 835(Church K. W. \(1989\), ``A Stochastic Parts Program and Noun Phrase Parser for)12 3287 2 720 5940 t
+10 I f
+(Proceedings,)4876 5940 w
+(IEEE International Conference on Acoustics, Speech and Signal Processing, 1989)9 3294 1 720 6160 t
+10 R f
+(, Glasgow)1 405 1 4014 6160 t
+( Good-Turing and Cat-Cal: Two New Methods for Estimating)8 2593(Church K. W. and W. A. Gale \(1990\) ``Enhanced)8 2087 2 720 6600 t
+(Probabilities of English Bigrams,'' to appear in)6 1896 1 720 6820 t
+10 I f
+(Computer, Speech, and Language)3 1357 1 2641 6820 t
+10 R f
+( Model for Large Vocabulary Speech Recognition,'')6 2242(Elbeze M. and A-M. Deroualt \(1990\) ``A Morphological)7 2438 2 720 7260 t
+10 I f
+(Proceedings, IEEE International Conference on Acoustics, Speech and Signal Processing, 1990)10 3843 1 720 7480 t
+10 R f
+(, Albuquerque)1 571 1 4563 7480 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 25 25
+%%Page: 26 26
+DpostDict begin
+/saveobj save def
+mark
+26 pagesetup
+10 R f
+(- 26 -)2 216 1 2772 880 t
+( to)1 114( submitted)1 456( K. W. Church \(1990\) ``What's Wrong with Adding One?'')9 2485( and)1 204(Gale W. A.)2 474 5 720 1760 t
+10 I f
+(IEEE Transactions on)2 911 1 4489 1760 t
+(Acoustics, Speech, and Signal Processing)4 1665 1 720 1980 t
+10 R f
+(Hanks P., T. Long, L. Urdang, \(eds.\) \(1979\))7 1758 1 720 2420 t
+10 I f
+(Collins Dictionary of the English Language)5 1754 1 2503 2420 t
+10 R f
+(, London: Collins)2 704 1 4257 2420 t
+( a deterministic parser,'' Naval Research Laboratory Technical)7 2710(Hindle D. \(1983\) ``User manual for Fidditch,)6 1970 2 720 2860 t
+(Memorandum 7590-142)1 974 1 720 3080 t
+( frequencies of species and the estimation of population parameters,'')9 2795(Good I. J. \(1953\) ``The population)5 1389 2 720 3520 t
+10 I f
+(Biometrika)4931 3520 w
+10 R f
+(,)5375 3520 w
+(v. 40, pp. 237-264)3 733 1 720 3740 t
+(Jelinek F. \(1985\) ``Self-organized Language Modeling for Speech Recognition,'' IBM Report)10 3760 1 720 4180 t
+( Substitution Using Numerical Rankings of Structural Disparity Between)8 3105(Kucera H. \(1988\) ``Automated Word)4 1575 2 720 4620 t
+(Misspelled Words & Candidate Substitution Words,'' U. S. Patent Number: 4,783,758)10 3463 1 720 4840 t
+( internal memo, RC 15803)4 1080(Mays M., F. Damerau and R. Mercer \(1990\) ``Context Based Spelling Correction,'' IBM)12 3600 2 720 5280 t
+(\(#730266\).)720 5500 w
+(McIlroy M. \(1982\) ``Development of a Spelling List,'')7 2222 1 720 5940 t
+10 I f
+( on Communications)2 838(IEEE Transactions)1 768 2 2971 5940 t
+10 R f
+(, Vol. COM-30, No.)3 823 1 4577 5940 t
+(1)720 6160 w
+( the language model of the IBM speech recognition system,'')9 2554( A. \(1984\) ``Estimation of probabilities in)6 1740( das)1 4(Na \301)1 129 4 720 6600 t
+10 I f
+(IEEE)5184 6600 w
+(Transactions on Acoustics, Speech, and Signal Processing,)6 2363 1 720 6820 t
+10 R f
+(v. ASSP-32 pp. 859-861)3 981 1 3108 6820 t
+(Salton G. \(1989\))2 669 1 720 7260 t
+10 I f
+(Automatic Text Processing)2 1077 1 1414 7260 t
+10 R f
+(, Reading, Massachusetts: Addison-Wesley)3 1734 1 2491 7260 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 26 26
+%%Page: 27 27
+DpostDict begin
+/saveobj save def
+mark
+27 pagesetup
+10 R f
+(- 27 -)2 216 1 2772 880 t
+( for Spoken Language Applications,'' presented at the International)8 2969(Seneff S. \(1989\) ``Probabilistic Parsing)4 1711 2 720 1760 t
+(Workshop on Parsing Technologies, Carnegie Mellon University)6 2600 1 720 1980 t
+( P. Stock, et al. \(eds.\) \(1987\))6 1167(Sinclair J., P. Hanks, G. Fox, R. Moon,)7 1591 2 720 2420 t
+10 I f
+(Collins Cobuild English Language Dictionary,)4 1893 1 3507 2420 t
+10 R f
+(London: Collins)1 654 1 720 2640 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 27 27
+%%Page: 28 28
+DpostDict begin
+/saveobj save def
+mark
+28 pagesetup
+10 R f
+(- 28 -)2 216 1 2772 880 t
+%INFO[SECTION: LEVEL = 1, NUMBER = 8.  , HEADING = Appendix: Confusion Matrices]
+9 B f
+( Confusion Matrices)2 781(8. Appendix:)1 519 2 720 1760 t
+10 B f
+(sub[X, Y] = Substitution of X \(incorrect\) for Y \(correct\))9 2368 1 2056 1970 t
+8 B f
+( \(correct\))1 313(X Y)1 2114 2 1089 2070 t
+8 R f
+( z)1 160( x y)2 320( w)1 160( u v)2 320( t)1 160( s)1 160( r)1 160( n o p q)4 640( m)1 160( l)1 160( k)1 160( i j)2 320( g h)2 320( f)1 160( e)1 160( d)1 160( c)1 160(a b)1 195 18 1356 2170 t
+8 S f
+(_ ___________________________________________________________________________________________________________)1 4302 1 1089 2190 t
+8 R f
+( 9 9 0 1 0 5 0)7 1120( 35)1 160( 0 0 1)3 480( 76)1 160( 0 1 0 0 3)5 800( 118)1 160( 0 0 2)3 480( 342)1 160( 0 7 1)3 480(a 0)1 289 10 1102 2290 t
+( 0 0 2 1 0 0 8 0 0 0)10 1600( 10)1 160( 5 0)2 320( 11)1 160( 0 9 9 2 2 3 1 0 0 0 5)11 1760(b 0)1 291 6 1100 2390 t
+( 1 3 7 1 1 0)6 960( 39 40)2 320( 2 5)2 320( 10)1 160( 0 9 5 0 0 0 1 0 7 9 1)11 1760( 16)1 160( 5 0)2 320(c 6)1 289 8 1102 2490 t
+( 0 0 4 0 2 0)6 960( 43 30 22)3 480( 0 5 5 0 0 2 3 7 3 0 1 0)12 1920( 12)1 160( 0)1 160( 10 13)2 320(d 1)1 291 7 1100 2590 t
+( 0)1 160( 18)1 160( 0 1 0)3 480( 15)1 160( 6)1 160( 14 12)2 320( 0 0)2 320( 93)1 160( 0 0 3 0 5)5 800( 89)1 160( 0 2 2 0)4 640( 11)1 160( 0 3)2 320(e 388)1 289 14 1102 2690 t
+( 0 0 2 0 0 0)6 960( 12)1 160( 0 3 1 0 5 2 0 0 0 3 4 1 0 0 0 6 4)17 2720( 15)1 160(f 0)1 284 5 1107 2790 t
+( 0 0 1 0 3 0)6 960( 13 21)2 320( 9 2 0 0 0 1 1 3 0 0 2 1 3 5)14 2240( 11 11)2 320( 1)1 160(g 4)1 291 6 1100 2890 t
+( 0 0 2 0 0 0)6 960( 11)1 160( 2 3 0 3 1)5 800( 12 14)2 320( 8 0 3 0 0 0 0 0 0 2 0)11 1760(h 1)1 291 6 1100 2990 t
+( 0)1 160( 15)1 160( 0 2 1)3 480( 47)1 160( 0 0 0 2 1)5 800( 49)1 160( 0 1 0 0 0 0 6 0 0)9 1440( 146)1 160( 0 0 0)3 480(i 103)1 282 10 1109 3090 t
+( 1 1 9 0 0 1 0 0 0 0 2 1 0 0 0 0 0 5 0 0 0 0 0 0 0)25 4000(j 0)1 282 2 1109 3190 t
+( 2 8 4 1 1 2 5 0 0 0 0 5 0 2 0 0 0 6 0 0 0 4 0 0 3)25 4000(k 1)1 291 2 1100 3290 t
+( 2 0 0 0 0 0 0)7 1120( 11 10)2 320( 2 5 0)3 480( 14)1 160( 0 1 0 0)4 640( 13)1 160( 1 4 0 4 5 6)6 960( 10)1 160(l 2)1 282 9 1109 3390 t
+( 3 2 2 3 0)5 800( 15 13)2 320( 0 6 0 0 9)5 800( 180)1 160( 3 7 8 0 2 0 6 0 0 4 4 0)12 1920(m 1)1 302 6 1089 3490 t
+( 5 7 0 0 1 2 0 2)8 1280( 28)1 160( 0 0 7 0)4 640( 35 78)2 320( 1 0 4)3 480( 19)1 160( 7 6 5 3 0 1)6 960(n 2)1 291 8 1100 3590 t
+( 0)1 160( 18)1 160( 0 0 0)3 480( 14 39)2 320( 0 2 4)3 480( 14)1 160( 0 2 0 0 0 0)6 960( 25)1 160( 0 0 0)3 480( 116)1 160( 1 1 3)3 480(o 91)1 291 12 1100 3690 t
+( 0 0 1 3 6 0 4 1 0 0 0)11 1760( 15)1 160( 1 2 0 6 5 0 2 9 0 2 7 6)12 1920( 11)1 160(p 0)1 291 5 1100 3790 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)19 3040( 27)1 160( 0 1 0 0 0)5 800(q 0)1 291 4 1100 3890 t
+( 4 0 0 1 0 0)6 960( 12 22)2 320( 0 0)2 320( 14)1 160( 1)1 160( 20)1 160( 2 2 8 2 0 5 8 4)8 1280( 30 12)2 320( 0)1 160( 14)1 160(r 0)1 284 11 1107 3990 t
+( 1)1 160( 20)1 160( 0 0 5 3)4 640( 15)1 160( 0)1 160( 14)1 160( 0 6 1 7 0)5 800( 27)1 160( 4 0 1 0 1 0)6 960( 27 33 35)3 480( 8)1 160(s 11)1 287 12 1104 4090 t
+( 0 7 6)3 480( 19)1 160( 0 0 2)3 480( 11 37)2 320( 9 5 5 6 0)5 800( 14)1 160( 5 0 1 0)4 640( 19)1 160( 7 5)2 320( 42)1 160( 4 9)2 320(t 3)1 282 12 1109 4190 t
+( 0 0 4 0 0 0 0 2 0 8 0)11 1760( 43)1 160( 0 0 0 0 2)5 800( 64)1 160( 0 0 0)3 480( 44)1 160( 0 0 0)3 480(u 20)1 291 8 1100 4290 t
+( 0 7 0 0 3 0 0 0 0 0 1 0 0 1 0 0 0 8 3 0 0 0 0 0 0)25 4000(v 0)1 291 2 1100 4390 t
+( 2 1 0 1 0 0 2 0 0 1 0 0 0 0 7 0 6 3 3 1 0 0 0 0 0)25 4000(w 2)1 300 2 1091 4490 t
+( 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0)25 4000(x 0)1 291 2 1100 4590 t
+( 8 5 0 0 1 0 0)7 1120( 36)1 160( 0 0 0 2 0 6 1 0 7)9 1440( 15)1 160( 0 1 7)3 480( 15)1 160( 0 2 0)3 480(y 0)1 291 8 1100 4690 t
+(z)1102 4790 w
+8 S f
+(\347)1211 4790 w
+(\347)1211 4710 w
+(\347)1211 4630 w
+(\347)1211 4550 w
+(\347)1211 4470 w
+(\347)1211 4390 w
+(\347)1211 4310 w
+(\347)1211 4230 w
+(\347)1211 4150 w
+(\347)1211 4070 w
+(\347)1211 3990 w
+(\347)1211 3910 w
+(\347)1211 3830 w
+(\347)1211 3750 w
+(\347)1211 3670 w
+(\347)1211 3590 w
+(\347)1211 3510 w
+(\347)1211 3430 w
+(\347)1211 3350 w
+(\347)1211 3270 w
+(\347)1211 3190 w
+(\347)1211 3110 w
+(\347)1211 3030 w
+(\347)1211 2950 w
+(\347)1211 2870 w
+(\347)1211 2790 w
+(\347)1211 2710 w
+(\347)1211 2630 w
+(\347)1211 2550 w
+(\347)1211 2470 w
+(\347)1211 2390 w
+(\347)1211 2310 w
+(\347)1211 2230 w
+(\347)1211 2150 w
+(\347)1211 2070 w
+8 R f
+( 3 0 0 0 0 3 0)7 1120( 21)1 160(0 0 0 7 0 0 0 0 0 0 0 7 5 0 0 0 0 2)17 2760 3 1351 4790 t
+10 B f
+( of XY)2 277( Reversal)1 421(rev[X, Y] =)2 480 3 2651 5090 t
+8 B f
+(X Y)1 2271 1 1089 5190 t
+8 R f
+( z)1 160( x y)2 320( w)1 160( u v)2 320( t)1 160( s)1 160( r)1 160( n o p q)4 640( m)1 160( l)1 160( k)1 160( i j)2 320( g h)2 320( f)1 160( e)1 160( d)1 160( c)1 160(a b)1 195 18 1356 5290 t
+8 S f
+(_ ___________________________________________________________________________________________________________)1 4302 1 1089 5310 t
+8 R f
+( 0 0 0 0 0)5 800( 31)1 160( 3 5)2 320( 27)1 160( 3 0)2 320( 25 10)2 320( 4)1 160( 14)1 160( 0 1)2 320( 19)1 160( 0 2 1 1 0 0 0)7 1120(a 0)1 289 12 1102 5410 t
+( 0 0 0 2 0 0 0 0 0 0 1 1 0 2 0 0 0 2 0 0 0 0 0 0 0)25 4000(b 0)1 291 2 1100 5510 t
+( 0 0 0 3 0 7 0 0 0 0 0)11 1760( 13)1 160( 0 0)2 320( 15)1 160( 0 0)2 320( 85)1 160( 0 0 0 1 0 0 1)7 1120(c 0)1 289 8 1102 5610 t
+( 0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 1 0 0 2 0 0 0 0 0)25 4000(d 0)1 291 2 1100 5710 t
+( 0 0 0 2 0)5 800( 85)1 160( 5 0)2 320( 29)1 160( 2 0)2 320( 16 11)2 320( 6)1 160( 21)1 160( 0 0)2 320( 60)1 160( 0 4 5 0 0 0 0)7 1120(e 1)1 289 12 1102 5810 t
+( 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0)17 2720( 12)1 160( 0 0 0 0 0 0 0)7 1120(f 0)1 284 4 1107 5910 t
+( 0 0 0 3 0 0 3 0 0 0 0 0)12 1920( 15)1 160( 0 0 0 2 0 0 0 0 0 0 1 0)12 1920(g 4)1 291 4 1100 6010 t
+( 0 0 0 0 0 0)6 960( 10)1 160( 0 0 0 0 0 0 0 0 0 0 0 0 0 0)14 2240( 15)1 160( 0 0 0)3 480(h 12)1 291 6 1100 6110 t
+( 0 6 0 0 0 3)6 960( 13 42 35)3 480( 0 1)2 320( 11)1 160( 1 3 0 0 0 0 9 0 5)9 1440( 66)1 160( 3)1 160( 31)1 160( 8)1 160(i 15)1 282 10 1109 6210 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)25 4000(j 0)1 282 2 1109 6310 t
+( 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)25 4000(k 0)1 291 2 1100 6410 t
+( 0 1 0 4 0 0 0 0 0 1 3 0 0 1 1 3 9 0 0 7 0)21 3360( 12 20)2 320( 0 0)2 320(l 11)1 282 4 1109 6510 t
+( 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 4 0 0 0 0 0)21 3360( 20)1 160( 0 0 0)3 480(m 9)1 302 4 1089 6610 t
+( 0 8 0 1 0 0 0 3 0 0 0 0 0 6 4 0 0 0 0 0 0)21 3360( 12)1 160( 0 6 2)3 480(n 15)1 291 4 1100 6710 t
+( 1 1 0 0 7 1 0 0)8 1280( 11)1 160( 0 2 0 4 0 0 0 5 0 0 1 0 5 0 1 0)16 2560(o 5)1 291 4 1100 6810 t
+( 0 0 0 4 0 0 1 0 0 0 0 0 0 1 0 0 5 3 6 0 0 0 0 0 0)25 4000(p 17)1 291 2 1100 6910 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)25 4000(q 0)1 291 2 1100 7010 t
+( 0 0 0 2 0)5 800( 10)1 160( 1 0 0 0 2)5 800( 30)1 160( 0 2 2 0 7)5 800( 14)1 160( 0 3 0)3 480( 24)1 160( 0 0 0)3 480(r 12)1 284 10 1107 7110 t
+8 S f
+(\347)1211 7144 w
+(\347)1211 7110 w
+(\347)1211 7030 w
+(\347)1211 6950 w
+(\347)1211 6870 w
+(\347)1211 6790 w
+(\347)1211 6710 w
+(\347)1211 6630 w
+(\347)1211 6550 w
+(\347)1211 6470 w
+(\347)1211 6390 w
+(\347)1211 6310 w
+(\347)1211 6230 w
+(\347)1211 6150 w
+(\347)1211 6070 w
+(\347)1211 5990 w
+(\347)1211 5910 w
+(\347)1211 5830 w
+(\347)1211 5750 w
+(\347)1211 5670 w
+(\347)1211 5590 w
+(\347)1211 5510 w
+(\347)1211 5430 w
+(\347)1211 5350 w
+(\347)1211 5270 w
+(\347)1211 5190 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 28 28
+%%Page: 29 29
+DpostDict begin
+/saveobj save def
+mark
+29 pagesetup
+8 R f
+(- 29 -)2 172 1 2794 400 t
+( 0)1 160( 16)1 160( 0 0 0 1 3 0 0 0)8 1280( 22)1 160( 0 0 5 2 0 1)6 960( 15)1 160( 0 0 0 9 0 0 5)7 1120(s 4)1 287 8 1104 800 t
+( 0 2 0 0 0)5 800( 11)1 160( 0 0 4 0 0 3 0 0 5 0 0)11 1760( 21 49)2 320( 0 3 0 4 0 0)6 960(t 4)1 282 6 1109 900 t
+( 2 0 0 0 0 0 0)7 1120( 11 11)2 320( 2 0)2 320( 20)1 160( 0 5 1 1 0 2 0 2 0 0 2 1 0)13 2080(u 22)1 291 6 1100 1000 t
+( 0 0 0 1 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)25 4000(v 0)1 291 2 1100 1100 t
+( 0 0 0 0 0 0 4 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 8 0)25 4000(w 0)1 300 2 1091 1200 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0)25 4000(x 0)1 291 2 1100 1300 t
+( 0 0 0 0 0 0 0)7 1120( 10)1 160( 1 2 0 0 0 1 0 0 0 0 3 0 0 0 2 0 1)17 2720(y 0)1 291 4 1100 1400 t
+( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)25 4000(z 0)1 289 2 1102 1500 t
+8 S f
+(\347)1211 1500 w
+(\347)1211 1440 w
+(\347)1211 1360 w
+(\347)1211 1280 w
+(\347)1211 1200 w
+(\347)1211 1120 w
+(\347)1211 1040 w
+(\347)1211 960 w
+(\347)1211 880 w
+(\347)1211 800 w
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 29 29
+%%Page: 30 30
+DpostDict begin
+/saveobj save def
+mark
+30 pagesetup
+8 R f
+(- 30 -)2 172 1 2794 400 t
+cleartomark
+showpage
+saveobj restore
+end
+%%EndPage: 30 30
+%%Trailer
+DpostDict begin
+done
+end
+%%Pages: 30
+%%DocumentFonts: Times-Bold Helvetica Times-Italic Times-Roman Symbol Times-Roman
